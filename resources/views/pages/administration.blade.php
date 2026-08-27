@@ -17,6 +17,10 @@
     </div>
 </div>
 
+<figure class="page-figure" data-anim="fade-up">
+    <img src="{{ asset('images/parasat/lobby.jpg') }}" alt="{{ __('pages.administration.heading') }}" loading="lazy">
+</figure>
+
 @php $staff = trans('pages.administration.staff'); @endphp
 
 <div class="page-admin-grid" data-anim-stagger="fade-up" data-anim-stagger-gap="80">

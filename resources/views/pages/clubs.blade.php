@@ -19,17 +19,17 @@
 
 @php
 $bgImages = [
-    'images/parasat/dvor.jpeg',
-    'images/parasat/lab.jpg',
-    'images/parasat/lib.jpg',
-    'images/parasat/biology.jpg',
-    'images/parasat/chemistry.jpg',
-    'images/parasat/physics.jpg',
-    'images/parasat/steam_cabinet.jpg',
-    'images/parasat/article1.jpeg',
-    'images/parasat/article2.jpeg',
-    'images/parasat/article3.jpeg',
-    'images/parasat/foie.jpg',
+    'images/parasat/junior_class.jpg',
+    'images/parasat/lesson2.jpg',
+    'images/parasat/library3.jpg',
+    'images/parasat/steam1.jpg',
+    'images/parasat/steam3.jpg',
+    'images/parasat/auditorium.jpg',
+    'images/parasat/lesson5.jpg',
+    'images/parasat/lesson4.jpg',
+    'images/parasat/library1.jpg',
+    'images/parasat/steam_startup.jpg',
+    'images/parasat/lesson3.jpg',
 ];
 $bgCount    = count($bgImages);
 $cardIndex  = 0;

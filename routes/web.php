@@ -13,8 +13,10 @@ Route::get('/lang/{locale}', function ($locale) {
 
 // О нас
 Route::get('/about', fn () => view('pages.about'))->name('about');
+Route::get('/about/mission', fn () => view('pages.mission'))->name('mission');
 Route::get('/about/administration', fn () => view('pages.administration'))->name('administration');
 Route::get('/about/teachers', fn () => view('pages.teachers'))->name('teachers');
+Route::get('/about/self-assessment', fn () => view('pages.self-assessment'))->name('self-assessment');
 Route::get('/contacts', fn () => view('pages.contacts'))->name('contacts');
 
 // Учебный процесс

@@ -17,6 +17,10 @@
     </div>
 </div>
 
+<figure class="page-figure" data-anim="fade-up">
+    <img src="{{ asset('images/parasat/lesson5.jpg') }}" alt="{{ __('pages.ent.heading') }}" loading="lazy">
+</figure>
+
 @php
 $years = [
     ['year' => '2024', 'graduates' => 28, 'avg' => 112, 'max' => 136, 'grants' => 8],

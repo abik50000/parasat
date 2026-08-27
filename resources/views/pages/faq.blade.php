@@ -15,6 +15,10 @@
     </div>
 </div>
 
+<figure class="page-figure" data-anim="fade-up">
+    <img src="{{ asset('images/parasat/faceid.jpg') }}" alt="{{ __('pages.faq.heading1') }}" loading="lazy">
+</figure>
+
 @php $faqs = trans('pages.faq.categories'); @endphp
 
 @foreach($faqs as $category => $items)

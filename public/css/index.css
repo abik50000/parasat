@@ -25,9 +25,15 @@ a {
 }
 
 .container.banner {
-  max-width: 1710px;
+  max-width: 90vw;
   padding-top: 20px;
   padding-bottom: 0px;
+}
+
+@media(min-width: 1024px) {
+  .container.banner {
+    max-width: calc(100vw - 60px);
+  }
 }
 
 .container.overflow-visible {
@@ -320,7 +326,7 @@ a {
   margin-left: auto;
   width: 100%;
   border-radius: 30px;
-  margin-top: 70px;
+  margin-top: 50px;
 }
 
 .banner-inner {

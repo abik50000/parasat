@@ -18,6 +18,10 @@
     </div>
 </div>
 
+<figure class="page-figure" data-anim="fade-up">
+    <img src="{{ asset('images/parasat/steam.jpg') }}" alt="{{ __('pages.education.heading1') }}" loading="lazy">
+</figure>
+
 @php $sections = trans('pages.education.sections'); @endphp
 
 <div class="tab-content-wrap" data-anim-stagger="scale-in" data-anim-stagger-gap="80">

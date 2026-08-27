@@ -17,6 +17,10 @@
     </div>
 </div>
 
+<figure class="page-figure" data-anim="fade-up">
+    <img src="{{ asset('images/parasat/teachers.jpg') }}" alt="{{ __('pages.teachers.heading') }}" loading="lazy">
+</figure>
+
 @php $subjects = trans('pages.teachers.subjects'); @endphp
 
 <div class="tab-content-wrap" data-anim-stagger="fade-up" data-anim-stagger-gap="60">

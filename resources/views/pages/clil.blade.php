@@ -18,6 +18,10 @@
     </div>
 </div>
 
+<figure class="page-figure" data-anim="fade-up">
+    <img src="{{ asset('images/parasat/lesson6.jpg') }}" alt="{{ __('pages.clil.heading1') }}" loading="lazy">
+</figure>
+
 @php $benefits = trans('pages.clil.benefits'); @endphp
 
 <div class="tab-content-wrap" data-anim-stagger="scale-in" data-anim-stagger-gap="80" style="margin-bottom:60px;">

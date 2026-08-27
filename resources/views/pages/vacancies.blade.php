@@ -18,6 +18,10 @@
     </div>
 </div>
 
+<figure class="page-figure" data-anim="fade-up">
+    <img src="{{ asset('images/parasat/school_outside2.jpg') }}" alt="{{ __('pages.vacancies.heading1') }}" loading="lazy">
+</figure>
+
 @php $vacancies = trans('pages.vacancies.items'); @endphp
 
 <div style="margin-bottom:56px;" data-anim-stagger="fade-up" data-anim-stagger-gap="80">

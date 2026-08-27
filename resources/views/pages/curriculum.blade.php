@@ -17,6 +17,10 @@
     </div>
 </div>
 
+<figure class="page-figure" data-anim="fade-up">
+    <img src="{{ asset('images/parasat/lesson3.jpg') }}" alt="{{ __('pages.curriculum.heading') }}" loading="lazy">
+</figure>
+
 @php $grades = trans('pages.curriculum.grades'); @endphp
 
 @foreach($grades as $grade => $subjects)

@@ -442,6 +442,32 @@
     /* ── Section spacing ── */
     .page-section { margin-bottom: 64px; }
 
+    /* ── Full-width figure ── */
+    .page-figure {
+        margin: 0 0 56px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(1,44,104,.12);
+        background: #f0f4ff;
+    }
+    .page-figure img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-height: 440px;
+        object-fit: cover;
+    }
+    .page-figure figcaption {
+        padding: 12px 20px;
+        font-size: 13px;
+        color: #7a869a;
+        background: #f7f9fc;
+    }
+    @media (max-width: 768px) {
+        .page-figure { margin-bottom: 40px; border-radius: 10px; }
+        .page-figure img { max-height: 260px; }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 768px) {
         .page-hero-title { font-size: 32px; }

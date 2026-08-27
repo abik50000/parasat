@@ -21,8 +21,65 @@
 @media screen and (min-width: 1440px) {
     .section-title.smaller {
         font-size: 70px;
-      
+
     }
+}
+
+/* ── Banner slogan / tagline ── */
+.banner-slogan {
+    margin: 0 0 18px;
+    color: #fca206;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+.banner-tagline {
+    max-width: 600px;
+    margin: 20px 0 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.6;
+}
+@media screen and (max-width: 767px) {
+    .banner-slogan { font-size: 16px; margin-bottom: 12px; }
+    .banner-tagline { font-size: 13px; }
+}
+
+/* ── About block: lead paragraph + tile captions ── */
+.about-lead {
+    max-width: 720px;
+    margin: 28px 0 0;
+    color: #4a5568;
+    font-size: 18px;
+    line-height: 1.75;
+}
+.uv-thumbnail-desc {
+    margin: 16px 0 0;
+    color: #4a5568;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* ── Tile photos: keep the white caption readable ── */
+.uv-thumbnail-wrap { position: relative; }
+.uv-thumbnail-wrap img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    display: block;
+}
+.uv-thumbnail-wrap::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 55%;
+    background: linear-gradient(to top, rgba(1, 26, 64, 0.82), rgba(1, 26, 64, 0));
+    pointer-events: none;
+}
+.uv-thumbnail-title { z-index: 1; }
+@media screen and (max-width: 767px) {
+    .uv-thumbnail-wrap img { height: 260px; }
 }
 </style>
 <x-header />
@@ -30,13 +87,15 @@
             <div class="container banner">
                 <div class="banner-inner">
                     <div class="banner-thumbnail-wrap">
-                        <img data-anim="scale-in" src="/images/parasat/fon.jpg" loading="lazy" alt="" class="banner-thumb"/>
+                        <img data-anim="scale-in" src="/images/parasat/school_outside3.jpg" loading="lazy" alt="Школа Парасат Ақжайық" class="banner-thumb"/>
                     </div>
                     <div class="banner-content">
                         <h1 data-anim="fade-up" class="banner-title">
                             {!! nl2br(e(__('pages.index.banner_title'))) !!}
                         </h1>
+                        <p data-anim="fade-up" class="banner-slogan">{{ __('pages.index.banner_slogan') }}</p>
                         <p data-anim="fade-up" class="banner-paragraph">{{ __('pages.index.banner_paragraph') }}</p>
+                        <p data-anim="fade-up" class="banner-tagline">{{ __('pages.index.banner_tagline') }}</p>
                     </div>
                 </div>
             </div>
@@ -52,33 +111,38 @@
                         <h2 data-anim="fade-up" class="section-title smaller">
                             {!! nl2br(e(__('pages.index.about_heading'))) !!}
                         </h2>
+                        <p data-anim="fade-up" class="about-lead">{{ __('pages.index.about_paragraph') }}</p>
                     </div>
                 </div>
                 <div class="uv-single-item-wrap" data-scroll-zoom-wave>
                     <div class="uv-single-item d-none"></div>
                     <div class="uv-single-item">
                         <div class="uv-thumbnail-wrap">
-                            <img src="/images/63b54b0a408b58546312a650_Rectangle%2019-min.png" loading="lazy" alt=""/>
+                            <img src="/images/parasat/junior_class.jpg" loading="lazy" alt="{{ __('pages.index.thumb_classes') }}"/>
                             <h3 class="uv-thumbnail-title">{{ __('pages.index.thumb_classes') }}</h3>
                         </div>
+                        <p class="uv-thumbnail-desc">{{ __('pages.index.thumb_classes_desc') }}</p>
                     </div>
                     <div data-anim="fade-right" class="uv-single-item">
                         <div class="uv-thumbnail-wrap">
-                            <img src="/images/63b54b0a13a7d9e182fb5472_Rectangle%2020-min.png" loading="lazy" alt=""/>
+                            <img src="/images/parasat/school_outside3.jpg" loading="lazy" alt="{{ __('pages.index.thumb_campus') }}"/>
                             <h3 class="uv-thumbnail-title">{{ __('pages.index.thumb_campus') }}</h3>
                         </div>
+                        <p class="uv-thumbnail-desc">{{ __('pages.index.thumb_campus_desc') }}</p>
                     </div>
                     <div data-anim="fade-left" class="uv-single-item">
                         <div class="uv-thumbnail-wrap">
-                            <img src="/images/63b54b0a26e16f744db0f7b6_Rectangle%2020-1-min.png" loading="lazy" alt=""/>
+                            <img src="/images/parasat/library1.jpg" loading="lazy" alt="{{ __('pages.index.thumb_library') }}"/>
                             <h3 class="uv-thumbnail-title">{{ __('pages.index.thumb_library') }}</h3>
                         </div>
+                        <p class="uv-thumbnail-desc">{{ __('pages.index.thumb_library_desc') }}</p>
                     </div>
                     <div class="uv-single-item">
                         <div class="uv-thumbnail-wrap">
-                            <img src="/images/63b54b0a3b1215449242da2a_Rectangle%2019-1-min.png" loading="lazy" alt=""/>
+                            <img src="/images/parasat/steam1.jpg" loading="lazy" alt="{{ __('pages.index.thumb_steam') }}"/>
                             <h3 class="uv-thumbnail-title">{{ __('pages.index.thumb_steam') }}</h3>
                         </div>
+                        <p class="uv-thumbnail-desc">{{ __('pages.index.thumb_steam_desc') }}</p>
                     </div>
                     <div id="w-node-_4c5894b9-2514-f8a8-50ee-a0cde03ac028-6dbd672b" class="uv-single-item d-none"><div class="uv-thumbnail-wrap hr"><img src="/images/63b55ce64a8708b6ad30204b_Frame.png" loading="lazy" alt=""></div></div>
                 </div>
@@ -137,7 +201,7 @@
                 </div>
                 <div class="faculty-grid">
                     <div id="w-node-eb4a36dd-0359-a222-3fb3-f5d2a5e49d62-6dbd672b" class="grid-one">
-                        <img data-anim="fade-right" src="/images/parasat/XXXL3.webp"  loading="lazy" class="image"/>
+                        <img data-anim="fade-right" src="/images/parasat/junior_class.jpg"  loading="lazy" alt="{{ __('pages.index.faculty1_title') }}" class="image"/>
                     </div>
                     <div id="w-node-_32847369-ac01-3bf6-7c08-28ede9c2a608-6dbd672b" class="grid-one">
                         <div data-anim="fade-left" class="faculty-single-item">
@@ -160,7 +224,21 @@
                         </div>
                     </div>
                     <div id="w-node-_2906dee6-6614-4329-7d66-89c0d97ab13d-6dbd672b" class="grid-one text-right">
-                        <img data-anim="fade-left" src="/images/parasat/XXXL2.webp" loading="lazy" class="image"/>
+                        <img data-anim="fade-left" src="/images/parasat/lesson6.jpg" loading="lazy" alt="{{ __('pages.index.faculty2_title') }}" class="image"/>
+                    </div>
+                </div>
+                <div class="faculty-grid" style="margin-top:30px;">
+                    <div id="w-node-faculty3-img" class="grid-one">
+                        <img data-anim="fade-right" src="/images/parasat/lesson.jpg" loading="lazy" alt="{{ __('pages.index.faculty3_title') }}" class="image"/>
+                    </div>
+                    <div id="w-node-faculty3-text" class="grid-one">
+                        <div data-anim="fade-left" class="faculty-single-item">
+                            <div class="faculty-category">
+                                <h3 class="faculty-cat-title">{{ __('pages.index.faculty3_cat') }}</h3>
+                            </div>
+                            <h2 class="faculty-item-title">{{ __('pages.index.faculty3_title') }}</h2>
+                            <p class="faculty-paragraph">{{ __('pages.index.faculty3_para') }}</p>
+                        </div>
                     </div>
                 </div>
                 <div class="btn-wrapper">
@@ -227,7 +305,7 @@
                 </div>
             </div>
             <div class="campus-thumb-wrap">
-                <img data-scroll-zoom src="/images/parasat/XXXL3.webp" class="image-8"/>
+                <img data-scroll-zoom src="/images/parasat/library3.jpg" alt="{{ __('pages.index.campus_label') }}" class="image-8"/>
             </div>
         </div>
         <div class="research-area wf-section">
@@ -251,10 +329,10 @@
                     <div class="swiper-wrapper research-slider-wrapper">
                         @php
                             $researchThumbs = [
-                                '/images/63ba9f257fceb071ff510444_BG%20Shape.png',
-                                '/images/63ba9f25b73c8b29600d2d0c_BG%20Shape-2.png',
-                                '/images/63ba9f25fe573c5907611b6f_BG%20Shape-1.png',
-                                '/images/63ba9f257fceb071ff510444_BG%20Shape.png',
+                                '/images/parasat/library2.jpg',
+                                '/images/parasat/auditorium2.jpg',
+                                '/images/parasat/steam3.jpg',
+                                '/images/parasat/lobby_reception.jpg',
                             ];
                         @endphp
                         @foreach($news1Items as $i => $item)
@@ -288,7 +366,7 @@
                 <div class="faculty-grid">
                     <div id="w-node-strategy-img" class="grid-one">
                         <img data-anim="fade-right"
-                             src="/images/parasat/XXXL3.webp"
+                             src="/images/parasat/steam_startup.jpg"
                              loading="lazy"
                              alt="{{ __('pages.index.strategy_title') }}" class="image"/>
                     </div>
@@ -299,7 +377,9 @@
                             </div>
                             <h2 class="faculty-item-title">{{ __('pages.index.strategy_title') }}</h2>
                             <p class="faculty-paragraph">{{ __('pages.index.strategy_para1') }}</p>
-                            <p class="faculty-paragraph" style="margin-top:20px;">{{ __('pages.index.strategy_para2') }}</p>
+                            @foreach(trans('pages.index.strategy_points') as $point)
+                            <p class="faculty-paragraph" style="margin-top:14px;"><strong>{{ $point['title'] }}</strong> — {{ $point['text'] }}</p>
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -18,6 +18,10 @@
     </div>
 </div>
 
+<figure class="page-figure" data-anim="fade-up">
+    <img src="{{ asset('images/parasat/lobby2.jpg') }}" alt="{{ __('pages.about.heading1') }}" loading="lazy">
+</figure>
+
 <div class="tab-content-wrap" data-anim-stagger="scale-in" data-anim-stagger-gap="80">
     <a href="{{ route('administration') }}" class="tab-content-item" style="text-decoration:none;" data-tilt>
         <div class="ripple-div-two"></div>
