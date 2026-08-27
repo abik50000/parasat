@@ -386,6 +386,7 @@
     }
     .page-news-card:hover { box-shadow: 0 8px 32px rgba(1,44,104,.12); }
     .page-news-thumb {
+        display: block;
         height: 200px;
         overflow: hidden;
     }

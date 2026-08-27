@@ -314,28 +314,12 @@ return [
         'intro'         => 'Follow student achievements and important announcements from Parasat Ақжайық school.',
         'filters'       => ['All', 'Events', 'Studies', 'Sports', 'Achievements'],
         'read_more'     => 'Read more →',
-        'items' => [
-            [
-                'cat'     => 'Events',
-                'title'   => '«No to Violence»: Legal Awareness Session for Students',
-                'date'    => '2025',
-                'excerpt' => 'A seminar titled "No to Violence: Legal Responsibility and Protection Mechanisms" was held at the school. A juvenile police officer from the Abai District Police Department of Shymkent, Senior Lieutenant R. Smatilla, explained types of violence, including stalking, personal boundary violations, legal consequences, and ways to protect one\'s rights.',
-                'photo'   => 'images/parasat/auditorium.jpg',
-            ],
-            [
-                'cat'     => 'Events',
-                'title'   => 'Documentary Film «Zakladchiki Mat» Screened for Students',
-                'date'    => '2025',
-                'excerpt' => 'Coordinated by the General Prosecutor\'s Office of Kazakhstan, the documentary «Zakladchiki Mat» was screened for students. The film illustrated the severe consequences of drug crime for society, families and individuals, as well as the legal responsibility for drug-courier activities.',
-                'photo'   => 'images/parasat/auditorium2.jpg',
-            ],
-            [
-                'cat'     => 'Achievements',
-                'title'   => 'Alim Aibyr Wins 1st Place at the Republican «Zerde» Competition!',
-                'date'    => '31 January 2026',
-                'excerpt' => 'Alim Aibyr Azamatuly won 1st place at the republican stage of the «Zerde» science project competition! Project title: "SmartEco: Concept of an Autonomous Eco-Home". Scientific supervisor: Bimuratova Bibinur. The republican stage was held at the «Baldauiren» REC in Shchuchinsk (28.01–31.01.2026).',
-                'photo'   => 'images/parasat/steam_startup.jpg',
-            ],
+        'empty'         => 'No news yet.',
+        'categories'    => [
+            'events'       => 'Events',
+            'study'        => 'Studies',
+            'sport'        => 'Sports',
+            'achievements' => 'Achievements',
         ],
     ],
 

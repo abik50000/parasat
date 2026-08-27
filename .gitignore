@@ -2,3 +2,5 @@ vendor
 cgi-bin
 tests
 .env
+.phpunit.result.cache
+/public/storage

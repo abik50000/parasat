@@ -30,7 +30,15 @@ Route::get('/education/ent-results', fn () => view('pages.ent-results'))->name('
 
 // Прочие страницы
 Route::get('/gallery', fn () => view('pages.gallery'))->name('gallery');
-Route::get('/news', fn () => view('pages.news'))->name('news');
+Route::get('/news', function () {
+    return view('pages.news', [
+        'news' => \App\Models\News::published()->orderByDesc('published_at')->orderByDesc('id')->get(),
+    ]);
+})->name('news');
+Route::get('/news/{news:slug}', function (\App\Models\News $news) {
+    abort_unless($news->is_published, 404);
+    return view('pages.news-show', ['news' => $news]);
+})->name('news.show');
 Route::get('/cafeteria', fn () => view('pages.cafeteria'))->name('cafeteria');
 Route::get('/vacancies', fn () => view('pages.vacancies'))->name('vacancies');
 Route::get('/faq', fn () => view('pages.faq'))->name('faq');
