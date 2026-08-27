@@ -106,8 +106,8 @@
 
                 @media only screen and (min-device-width: 1024px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
                     .banner-title {
-                        font-size: 70px;
-                        line-height: 80px;
+                        font-size: 60px;
+                        line-height: 60px;
                     }
 
                     .section-title {
@@ -289,31 +289,121 @@
                         color: #fff;
                     }
                 }
+
+                /* ── Aligned header bar + divider ── */
+                .navbar-no-shadow { top: 0 !important; }
+                .navbar-no-shadow-container {
+                    max-width: 1570px !important;
+                    padding: 18px 40px 16px 40px !important;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+                }
+                .container-regular { max-width: 100% !important; }
+
+                .navbar-brand {
+                    justify-content: flex-start !important;
+                    padding-right: 26px;
+                    border-right: 1px solid rgba(255, 255, 255, 0.14);
+                }
+
+                .nav-menu-wrapper { margin-left: 26px; }
+
+                .nav-link { position: relative; color: #fff; }
+                .nav-link:hover { color: #fca206; }
+                .nav-menu .nav-link.is-active { color: #fca206; }
+                .nav-menu .nav-link.is-active::after {
+                    content: '';
+                    position: absolute;
+                    left: 10px;
+                    right: 10px;
+                    bottom: -6px;
+                    height: 2px;
+                    background: #fca206;
+                    border-radius: 2px;
+                }
+
+                .lang-switcher { display: flex; align-items: center; gap: 6px; margin-left: 16px; }
+                .lang-pill {
+                    padding: 6px 11px;
+                    border-radius: 6px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                    text-decoration: none;
+                    color: #fff;
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    transition: background .15s, color .15s, border-color .15s;
+                }
+                .lang-pill:hover { border-color: #fca206; color: #fca206; }
+                .lang-pill.is-active { background: #fca206; border-color: #fca206; color: #fff; }
+                .lang-pill.is-active:hover { color: #fff; }
+
+                .lang-switcher-mobile { display: none; }
+
+                @media screen and (max-width: 991px) {
+                    .navbar-no-shadow-container { padding: 14px 20px !important; border-bottom: none; }
+                    .navbar-no-shadow-container,
+                    .container-regular,
+                    .navbar-wrapper { max-width: 100% !important; }
+                    .navbar-wrapper { width: 100%; flex-wrap: nowrap; }
+                    .navbar-brand { border-right: none; padding-right: 0; width: auto; flex: 0 0 auto; }
+                    .navbar-brand img.desktop-logo { display: none; }
+                    .navbar-brand img.mobile-logo { display: block; width: 92px; top: 0; }
+                    .nav-menu-wrapper { margin-left: 0; }
+                    .nav-menu .nav-link.is-active::after { display: none; }
+                    .navbar-wrapper > .lang-switcher { display: none; }
+                    .w-nav-menu.w--open .lang-switcher-mobile { display: flex; gap: 8px; margin-top: 28px; }
+                    .menu-button.w-nav-button {
+                        display: flex !important;
+                        align-items: center;
+                        justify-content: center;
+                        width: 46px;
+                        height: 46px;
+                        margin-left: auto;
+                        padding: 0;
+                        border-radius: 10px;
+                        background: rgba(255, 255, 255, 0.12);
+                        color: #fff;
+                    }
+                    .menu-button.w-nav-button .w-icon-nav-menu {
+                        position: static;
+                        font-size: 24px;
+                        line-height: 1;
+                    }
+                    .menu-button.w-nav-button.w--open { background: #fca206; }
+                }
             </style>
         </div>
+        @php
+            $aboutActive = request()->routeIs('about', 'mission', 'administration', 'teachers', 'gallery', 'self-assessment', 'vacancies', 'contacts') ? 'is-active' : '';
+            $eduActive   = request()->routeIs('education', 'curriculum', 'schedule', 'clil', 'clubs', 'assessment-schedule', 'ent-results', 'cafeteria') ? 'is-active' : '';
+        @endphp
         <div class="navbar-no-shadow wf-section">
             <div role="banner" class="navbar-no-shadow-container w-nav" data-collapse="medium">
                 <div class="container-regular">
                     <div class="navbar-wrapper">
                         <a href="/" class="navbar-brand w-nav-brand">
-                            <img data-anim="fade-right" src="/images/parasat/parasat-logo.png" loading="lazy" alt="" class="desktop-logo"/>
-                            <img src="/images/parasat/parasat-logo.png" loading="lazy" alt="" class="mobile-logo"/>
+                            <img data-anims="fade-right" src="/images/parasat/parasat-logo.png" loading="lazy" alt="Parasat Ақжайық" class="desktop-logo"/>
+                            <img src="/images/parasat/parasat-logo.png" loading="lazy" alt="Parasat Ақжайық" class="mobile-logo"/>
                         </a>
-                        <nav data-anim="fade-downs" role="navigation" class="nav-menu-wrapper w-nav-menu">
+                        <nav data-anims="fade-downs" role="navigation" class="nav-menu-wrapper w-nav-menu">
                             <ul role="list" class="nav-menu w-list-unstyled">
                                 <li>
-                                    <a href="{{ route('home') }}" class="nav-link">{{ __('nav.home') }}</a>
+                                    <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'is-active' : '' }}">{{ __('nav.home') }}</a>
                                 </li>
                                 <li class="nav-dropdown">
-                                    <a href="{{ route('about') }}" class="nav-link">{{ __('nav.about') }} <span class="nav-dropdown-arrow">▾</span></a>
+                                    <a href="{{ route('about') }}" class="nav-link {{ $aboutActive }}">{{ __('nav.about') }} <span class="nav-dropdown-arrow">▾</span></a>
                                     <div class="nav-dropdown-menu">
+                                        <a href="{{ route('mission') }}">{{ __('nav.mission') }}</a>
                                         <a href="{{ route('administration') }}">{{ __('nav.administration') }}</a>
                                         <a href="{{ route('teachers') }}">{{ __('nav.teachers') }}</a>
+                                        <a href="{{ route('gallery') }}">{{ __('nav.gallery') }}</a>
+                                        <a href="{{ route('self-assessment') }}">{{ __('nav.self_assessment') }}</a>
+                                        <a href="{{ route('vacancies') }}">{{ __('nav.vacancies') }}</a>
                                         <a href="{{ route('contacts') }}">{{ __('nav.contacts') }}</a>
                                     </div>
                                 </li>
                                 <li class="nav-dropdown">
-                                    <a href="{{ route('education') }}" class="nav-link">{{ __('nav.education') }} <span class="nav-dropdown-arrow">▾</span></a>
+                                    <a href="{{ route('education') }}" class="nav-link {{ $eduActive }}">{{ __('nav.education') }} <span class="nav-dropdown-arrow">▾</span></a>
                                     <div class="nav-dropdown-menu">
                                         <a href="{{ route('curriculum') }}">{{ __('nav.curriculum') }}</a>
                                         <a href="{{ route('schedule') }}">{{ __('nav.schedule') }}</a>
@@ -322,31 +412,25 @@
                                         <a href="{{ route('assessment-schedule') }}">{{ __('nav.assessment') }}</a>
                                         <a href="{{ route('ent-results') }}">{{ __('nav.ent') }}</a>
                                         <a href="{{ route('cafeteria') }}">{{ __('nav.cafeteria') }}</a>
-                                        <a href="{{ route('vacancies') }}" class="lg:hidden">{{ __('nav.vacancies') }}</a>
                                         <a href="{{ route('faq') }}" class="lg:hidden">{{ __('nav.faq') }}</a>
                                     </div>
                                 </li>
                                 <li>
-                                    <a href="{{ route('news') }}" class="nav-link">{{ __('nav.news') }}</a>
-                                </li>
-                               
-                                <li>
-                                    <a href="{{ route('vacancies') }}" class="nav-link max-lg:hidden">{{ __('nav.vacancies') }}</a>
+                                    <a href="{{ route('news') }}" class="nav-link {{ request()->routeIs('news') ? 'is-active' : '' }}">{{ __('nav.news') }}</a>
                                 </li>
                                 <li class="list-item-6">
-                                    <a href="{{ route('faq') }}" class="nav-link max-lg:hidden">{{ __('nav.faq') }}</a>
+                                    <a href="{{ route('faq') }}" class="nav-link max-lg:hidden {{ request()->routeIs('faq') ? 'is-active' : '' }}">{{ __('nav.faq') }}</a>
                                 </li>
                             </ul>
+                            <div class="lang-switcher-mobile">
+                                @foreach(['kz' => 'ҚАЗ', 'ru' => 'РУС', 'en' => 'ENG'] as $code => $label)
+                                <a href="{{ route('lang.switch', $code) }}" class="lang-pill {{ app()->getLocale() === $code ? 'is-active' : '' }}">{{ $label }}</a>
+                                @endforeach
+                            </div>
                         </nav>
-                        <div class="lang-switcher" data-anim="fade-left" style="display:flex;align-items:center;gap:2px;margin-left:16px;">
+                        <div class="lang-switcher" data-anims="fade-left">
                             @foreach(['kz' => 'ҚАЗ', 'ru' => 'РУС', 'en' => 'ENG'] as $code => $label)
-                            <a href="{{ route('lang.switch', $code) }}"
-                               style="padding:6px 10px;border-radius:6px;font-size:12px;font-weight:600;letter-spacing:0.5px;text-decoration:none;transition:background .15s,color .15s;
-                                      {{ app()->getLocale() === $code
-                                          ? 'background:#fca206;color:#fff;'
-                                          : 'background:transparent;color:#fff;' }}">
-                                {{ $label }}
-                            </a>
+                            <a href="{{ route('lang.switch', $code) }}" class="lang-pill {{ app()->getLocale() === $code ? 'is-active' : '' }}">{{ $label }}</a>
                             @endforeach
                         </div>
 

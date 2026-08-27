@@ -2,21 +2,9 @@
 
 @section('breadcrumb', __('page.clil.breadcrumb'))
 @section('title', __('page.clil.title'))
+@section('page-desc', __('pages.clil.intro'))
 
 @section('page-content')
-
-<div class="section-cotent-wrap grid-item mb-100" style="margin-bottom:56px;">
-    <div class="grid-one">
-        <p class="section-paragraph red" data-anim="fade-right">{{ __('pages.clil.section_label') }}</p>
-    </div>
-    <div class="grid-two">
-        <h2 class="section-title dark" data-anim="fade-up">{{ __('pages.clil.heading1') }}</h2>
-        <h2 class="section-title dark" data-anim="fade-up" data-anim-delay="80">{{ __('pages.clil.heading2') }}</h2>
-        <p class="banner-paragraph dark" data-anim="fade-up" data-anim-delay="160" style="margin-top:24px;">
-            {{ __('pages.clil.intro') }}
-        </p>
-    </div>
-</div>
 
 <figure class="page-figure" data-anim="fade-up">
     <img src="{{ asset('images/parasat/lesson6.jpg') }}" alt="{{ __('pages.clil.heading1') }}" loading="lazy">

@@ -215,6 +215,97 @@ return [
         ],
     ],
 
+    // ── mission ────────────────────────────────────────────────────────────
+    'mission' => [
+        'section_label' => 'About School',
+        'heading1'      => 'Our Mission',
+        'heading2'      => 'and Values',
+        'intro'         => 'Parasat Ақжайық is a school that combines quality education with modern opportunities to unlock every student\'s abilities. Our work is built on a clear mission and shared values.',
+        'mission_title' => 'Our Mission',
+        'mission_text'  => 'Combining quality education with modern opportunities, to unlock every student\'s abilities and develop their creative potential. Our goal is to shape an educated, free-thinking personality confident about the future and adaptable to a changing world.',
+        'vision_title'  => 'Our Vision',
+        'vision_text'   => 'To be a modern school where every student fully unlocks their potential, is ready for the global world and respects national values.',
+        'values_title'  => 'Our Values',
+        'values' => [
+            ['title' => 'Quality',        'text' => 'Continuously improving the quality of education and teacher expertise.'],
+            ['title' => 'Innovation',     'text' => 'Introducing modern technologies and methods into the learning process.'],
+            ['title' => 'Personality',    'text' => 'Unlocking each child\'s abilities and nurturing a well-rounded individual.'],
+            ['title' => 'Collaboration',  'text' => 'An open and trusting partnership between student, teacher and parents.'],
+            ['title' => 'Responsibility', 'text' => 'Responsibility towards oneself, society and the environment.'],
+            ['title' => 'Safety',         'text' => 'A safe and supportive environment for every student is our top priority.'],
+        ],
+        'cta_title'     => 'Want to learn more about the school?',
+        'cta_desc'      => 'Ask your questions about admission, the learning process and school life',
+        'cta_btn'       => 'Get in touch',
+    ],
+
+    // ── self-assessment ────────────────────────────────────────────────────
+    'self_assessment' => [
+        'section_label' => 'About School',
+        'heading'       => 'School Self-Assessment',
+        'intro'         => 'The school analyses the quality of its educational activity every year through self-assessment. It is an open process that helps strengthen strengths and identify areas for development.',
+        'areas_title'   => 'Assessment Areas',
+        'areas' => [
+            ['title' => 'Quality of educational programmes',    'desc' => 'Alignment of the curriculum with the state standard and relevance of content.'],
+            ['title' => 'Teaching and upbringing process',      'desc' => 'Lesson quality, use of modern methods, consistency of character education.'],
+            ['title' => 'Teacher qualification',                'desc' => 'Teachers\' qualification level, professional development and attestation results.'],
+            ['title' => 'Material and technical resources',     'desc' => 'Equipment of classrooms, laboratories, the library and sports facilities.'],
+            ['title' => 'Students\' learning achievements',     'desc' => 'Trends in BJB / TJB, UNT and olympiad results.'],
+            ['title' => 'Safety and psychological climate',     'desc' => 'Face ID system, video surveillance, bullying prevention and psychological support.'],
+        ],
+        'docs_title'    => 'Reports and Documents',
+        'docs_note'     => 'The full self-assessment report for the current academic year and supporting documents are available from the school administration on request.',
+        'docs_btn'      => 'Request the report',
+    ],
+
+    // ── gallery ────────────────────────────────────────────────────────────
+    'gallery' => [
+        'section_label' => 'Gallery',
+        'heading'       => 'School Life',
+        'intro'         => 'Photos of the campus, classrooms, library, STEAM lab and school events.',
+        'filters' => [
+            'all'      => 'All',
+            'campus'   => 'Campus',
+            'classes'  => 'Classrooms',
+            'library'  => 'Library',
+            'steam'    => 'STEAM',
+            'security' => 'Security',
+            'staff'    => 'Staff',
+        ],
+        'items' => [
+            ['img' => 'school_outside.jpg',   'cat' => 'campus',   'alt' => 'School building'],
+            ['img' => 'school_outside2.jpg',  'cat' => 'campus',   'alt' => 'Exterior view'],
+            ['img' => 'school_outside3.jpg',  'cat' => 'campus',   'alt' => 'School grounds'],
+            ['img' => 'dvor.jpeg',            'cat' => 'campus',   'alt' => 'School yard'],
+            ['img' => 'lobby.jpg',            'cat' => 'campus',   'alt' => 'Lobby'],
+            ['img' => 'lobby2.jpg',           'cat' => 'campus',   'alt' => 'Lobby space'],
+            ['img' => 'lobby_reception.jpg',  'cat' => 'campus',   'alt' => 'Reception'],
+            ['img' => 'auditorium.jpg',       'cat' => 'campus',   'alt' => 'Auditorium'],
+            ['img' => 'auditorium2.jpg',      'cat' => 'campus',   'alt' => 'Auditorium'],
+            ['img' => 'lesson.jpg',           'cat' => 'classes',  'alt' => 'In class'],
+            ['img' => 'lesson2.jpg',          'cat' => 'classes',  'alt' => 'In class'],
+            ['img' => 'lesson3.jpg',          'cat' => 'classes',  'alt' => 'Group work'],
+            ['img' => 'lesson4.jpg',          'cat' => 'classes',  'alt' => 'Lesson'],
+            ['img' => 'lesson5.jpg',          'cat' => 'classes',  'alt' => 'Students'],
+            ['img' => 'lesson6.jpg',          'cat' => 'classes',  'alt' => 'Lesson'],
+            ['img' => 'junior_class.jpg',     'cat' => 'classes',  'alt' => 'Primary school'],
+            ['img' => 'library1.jpg',         'cat' => 'library',  'alt' => 'Library'],
+            ['img' => 'library2.jpg',         'cat' => 'library',  'alt' => 'Reading room'],
+            ['img' => 'library3.jpg',         'cat' => 'library',  'alt' => 'Book collection'],
+            ['img' => 'library4.jpg',         'cat' => 'library',  'alt' => 'Library'],
+            ['img' => 'library5.jpg',         'cat' => 'library',  'alt' => 'Reading area'],
+            ['img' => 'steam.jpg',            'cat' => 'steam',    'alt' => 'STEAM lab'],
+            ['img' => 'steam1.jpg',           'cat' => 'steam',    'alt' => 'Robotics'],
+            ['img' => 'steam2.jpg',           'cat' => 'steam',    'alt' => 'STEAM class'],
+            ['img' => 'steam3.jpg',           'cat' => 'steam',    'alt' => 'Experiment'],
+            ['img' => 'steam4.jpg',           'cat' => 'steam',    'alt' => 'STEAM equipment'],
+            ['img' => 'steam_startup.jpg',    'cat' => 'steam',    'alt' => 'Project defence'],
+            ['img' => 'faceid.jpg',           'cat' => 'security', 'alt' => 'Face ID system'],
+            ['img' => 'faceid2.jpg',          'cat' => 'security', 'alt' => 'Access control'],
+            ['img' => 'teachers.jpg',         'cat' => 'staff',    'alt' => 'Teaching staff'],
+        ],
+    ],
+
     // ── news ───────────────────────────────────────────────────────────────
     'news' => [
         'section_label' => 'News',
@@ -309,7 +400,7 @@ return [
 
     // ── index ──────────────────────────────────────────────────────────────
     'index' => [
-        'banner_title'     => "School\nParasat Ақжайық",
+        'banner_title'     => "Parasat Ақжайық",
         'banner_slogan'    => 'Knowledge. Growth. Future.',
         'banner_paragraph' => 'Combining quality education with modern opportunities, we create the conditions to unlock every student\'s abilities and creative potential.',
         'banner_tagline'   => 'Shaping a personality adaptable to a changing world',

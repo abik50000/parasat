@@ -2,20 +2,9 @@
 
 @section('breadcrumb', __('page.cafeteria.breadcrumb'))
 @section('title', __('page.cafeteria.title'))
+@section('page-desc', __('pages.cafeteria.intro'))
 
 @section('page-content')
-
-<div class="section-cotent-wrap grid-item mb-100" style="margin-bottom:56px;">
-    <div class="grid-one">
-        <p class="section-paragraph red" data-anim="fade-right">{{ __('pages.cafeteria.section_label') }}</p>
-    </div>
-    <div class="grid-two">
-        <h2 class="section-title dark" data-anim="fade-up">{{ __('pages.cafeteria.heading') }}</h2>
-        <p class="banner-paragraph dark" data-anim="fade-up" data-anim-delay="100" style="margin-top:24px;">
-            {{ __('pages.cafeteria.intro') }}
-        </p>
-    </div>
-</div>
 
 @php
 $schedule = trans('pages.cafeteria.schedule');

@@ -29,6 +29,7 @@ Route::get('/education/assessment-schedule', fn () => view('pages.assessment-sch
 Route::get('/education/ent-results', fn () => view('pages.ent-results'))->name('ent-results');
 
 // Прочие страницы
+Route::get('/gallery', fn () => view('pages.gallery'))->name('gallery');
 Route::get('/news', fn () => view('pages.news'))->name('news');
 Route::get('/cafeteria', fn () => view('pages.cafeteria'))->name('cafeteria');
 Route::get('/vacancies', fn () => view('pages.vacancies'))->name('vacancies');

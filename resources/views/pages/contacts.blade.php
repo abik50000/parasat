@@ -5,16 +5,6 @@
 
 @section('page-content')
 
-<div class="section-cotent-wrap grid-item mb-100" style="margin-bottom:56px;">
-    <div class="grid-one">
-        <p class="section-paragraph red" data-anim="fade-right">{{ __('pages.contacts.section_label') }}</p>
-    </div>
-    <div class="grid-two">
-        <h2 class="section-title dark" data-anim="fade-up">{{ __('pages.contacts.heading1') }}</h2>
-        <h2 class="section-title dark" data-anim="fade-up" data-anim-delay="80">{{ __('pages.contacts.heading2') }}</h2>
-    </div>
-</div>
-
 <div class="page-two-col">
     <div data-anim="fade-right">
         <h2 class="page-section-title">{{ __('pages.contacts.req_title') }}</h2>

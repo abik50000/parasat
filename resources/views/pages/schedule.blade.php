@@ -2,20 +2,9 @@
 
 @section('breadcrumb', __('page.schedule.breadcrumb'))
 @section('title', __('page.schedule.title'))
+@section('page-desc', __('pages.schedule.intro'))
 
 @section('page-content')
-
-<div class="section-cotent-wrap grid-item mb-100" style="margin-bottom:56px;">
-    <div class="grid-one">
-        <p class="section-paragraph red" data-anim="fade-right">{{ __('pages.schedule.section_label') }}</p>
-    </div>
-    <div class="grid-two">
-        <h2 class="section-title dark" data-anim="fade-up">{{ __('pages.schedule.heading') }}</h2>
-        <p class="banner-paragraph dark" data-anim="fade-up" data-anim-delay="100" style="margin-top:24px;">
-            {{ __('pages.schedule.intro') }}
-        </p>
-    </div>
-</div>
 
 @php $days = trans('pages.schedule.days'); $suffix = __('pages.schedule.class_suffix'); @endphp
 

@@ -14,8 +14,8 @@
 
 @media screen and (min-width: 1200px) {
     .banner-title {
-        font-size: 80px;
-          line-height: 80px;
+        font-size: 60px;
+          line-height: 60px;
     }
 }
 @media screen and (min-width: 1440px) {
@@ -41,10 +41,7 @@
     font-style: italic;
     line-height: 1.6;
 }
-@media screen and (max-width: 767px) {
-    .banner-slogan { font-size: 16px; margin-bottom: 12px; }
-    .banner-tagline { font-size: 13px; }
-}
+
 
 /* ── About block: lead paragraph + tile captions ── */
 .about-lead {
@@ -59,6 +56,14 @@
     color: #4a5568;
     font-size: 15px;
     line-height: 1.6;
+}
+
+@media screen and (max-width: 767px) {
+    .banner-slogan { font-size: 16px; margin-bottom: 12px; }
+    .banner-tagline { font-size: 13px; }
+    .uv-thumbnail-desc {
+        font-size: 12px;
+    }
 }
 
 /* ── Tile photos: keep the white caption readable ── */

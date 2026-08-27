@@ -2,21 +2,9 @@
 
 @section('breadcrumb', __('page.about.breadcrumb'))
 @section('title', __('page.about.title'))
+@section('page-desc', __('pages.about.intro'))
 
 @section('page-content')
-
-<div class="section-cotent-wrap grid-item mb-100" style="margin-bottom:56px;">
-    <div class="grid-one">
-        <p class="section-paragraph red" data-anim="fade-right">{{ __('pages.about.section_label') }}</p>
-    </div>
-    <div class="grid-two">
-        <h2 class="section-title dark" data-anim="fade-up">{{ __('pages.about.heading1') }}</h2>
-        <h2 class="section-title dark" data-anim="fade-up" data-anim-delay="80">{{ __('pages.about.heading2') }}</h2>
-        <p class="banner-paragraph dark" data-anim="fade-up" data-anim-delay="160" style="margin-top:24px;">
-            {{ __('pages.about.intro') }}
-        </p>
-    </div>
-</div>
 
 <figure class="page-figure" data-anim="fade-up">
     <img src="{{ asset('images/parasat/lobby2.jpg') }}" alt="{{ __('pages.about.heading1') }}" loading="lazy">

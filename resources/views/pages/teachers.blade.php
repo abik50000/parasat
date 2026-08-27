@@ -2,20 +2,9 @@
 
 @section('breadcrumb', __('page.teachers.breadcrumb'))
 @section('title', __('page.teachers.title'))
+@section('page-desc', __('pages.teachers.intro'))
 
 @section('page-content')
-
-<div class="section-cotent-wrap grid-item mb-100" style="margin-bottom:56px;">
-    <div class="grid-one">
-        <p class="section-paragraph red" data-anim="fade-right">{{ __('pages.teachers.section_label') }}</p>
-    </div>
-    <div class="grid-two">
-        <h2 class="section-title dark" data-anim="fade-up">{{ __('pages.teachers.heading') }}</h2>
-        <p class="banner-paragraph dark" data-anim="fade-up" data-anim-delay="100" style="margin-top:24px;">
-            {{ __('pages.teachers.intro') }}
-        </p>
-    </div>
-</div>
 
 <figure class="page-figure" data-anim="fade-up">
     <img src="{{ asset('images/parasat/teachers.jpg') }}" alt="{{ __('pages.teachers.heading') }}" loading="lazy">

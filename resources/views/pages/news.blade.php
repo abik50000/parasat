@@ -2,23 +2,9 @@
 
 @section('breadcrumb', __('page.news.breadcrumb'))
 @section('title', __('page.news.title'))
+@section('page-desc', __('pages.news.intro'))
 
 @section('page-content')
-
-<div class="section-cotent-wrap grid-item mb-100" style="margin-bottom:56px;">
-    <div class="grid-one">
-        <p class="section-paragraph red" data-anim="fade-right">{{ __('pages.news.section_label') }}</p>
-    </div>
-    <div class="grid-two">
-        <h2 class="section-title dark" data-anim="fade-up">{{ __('pages.news.heading1') }}</h2>
-        @if(__('pages.news.heading2'))
-        <h2 class="section-title dark" data-anim="fade-up" data-anim-delay="80">{{ __('pages.news.heading2') }}</h2>
-        @endif
-        <p class="banner-paragraph dark" data-anim="fade-up" data-anim-delay="160" style="margin-top:24px;">
-            {{ __('pages.news.intro') }}
-        </p>
-    </div>
-</div>
 
 <div class="page-filters" data-anim="fade-up">
     @foreach(trans('pages.news.filters') as $i => $cat)

@@ -14,6 +14,14 @@ a {
   text-decoration: underline;
 }
 
+.max-md-hidden {
+  display: hidden !important;
+}
+
+.min-md-hidden {
+  display: hidden !important;
+}
+
 .container {
   overflow: hidden;
   width: 100%;
@@ -32,7 +40,16 @@ a {
 
 @media(min-width: 1024px) {
   .container.banner {
-    max-width: calc(100vw - 60px);
+    max-width: calc(100vw - 160px);
+  }
+}
+
+@media(max-width: 576px) {
+  .container.banner {
+    max-width:calc(100vw - 30px);
+  }
+  .container .banner-thumb {
+    border-radius: 10px;
   }
 }
 
@@ -142,18 +159,19 @@ a {
     display: flex;
     align-items: center;
     position: relative;
-    width: 120px;
+    width: 70px;
     justify-content: center;
 }
 
 .navbar-brand img.desktop-logo {
-  top: 0;
+  top: -10px;
+  left: -10px;
   position: absolute;
   width: 100%;
 }
 
 .navbar-brand img.mobile-logo {
-  width: 100px;
+  width: 70px;
   position: relative;
   display: block;
   top: 10px;
@@ -162,7 +180,7 @@ a {
 
 @media(min-width: 992px) {
   .navbar-brand {
-    width: 140px;
+    width: 70px;
   }
   .navbar-brand img.desktop-logo {
     display: block;
@@ -174,13 +192,13 @@ a {
 
 @media(min-width: 1200px) {
   .navbar-brand {
-    width: 120px;
+    width: 70px;
   }
 }
 
 @media(min-width: 1500px) {
   .navbar-brand {
-    width: 140px;
+    width: 70px;
   }
 }
 
@@ -326,7 +344,7 @@ a {
   margin-left: auto;
   width: 100%;
   border-radius: 30px;
-  margin-top: 50px;
+  margin-top:  65px;
 }
 
 .banner-inner {
@@ -351,7 +369,7 @@ a {
   margin-bottom: 16px;
   font-family: 'Helveticaneue Regular', sans-serif;
   color: #fff;
-  font-size: 86px;
+  font-size: 70px;
   line-height: 100px;
   font-weight: 400;
   padding-right: 20px;
@@ -393,7 +411,7 @@ a {
 .section-title.style-01 {
   max-width: 445px;
   font-family: Larken, sans-serif;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .section-title.mb-30 {
@@ -442,7 +460,7 @@ a {
   font-size: 30px;
   line-height: 130%;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .columns {
@@ -484,7 +502,7 @@ a {
   font-size: 50px;
   line-height: 100%;
   margin-bottom: 10px;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .tab-link:hover {
@@ -512,7 +530,7 @@ a {
   font-size: 30px;
   line-height: 130%;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .tab-content-title.style-01 {
@@ -541,7 +559,7 @@ a {
   font-size: 28px;
   line-height: 100%;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .tab-icon {
@@ -598,7 +616,7 @@ a {
   font-size: 20px;
   line-height: 20px;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .faculty-item-title {
@@ -611,7 +629,7 @@ a {
   font-size: 36px;
   line-height: 130%;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .faculty-paragraph {
@@ -622,7 +640,7 @@ a {
   font-size: 16px;
   line-height: 135%;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform:initial;
 }
 
 .primary-button {
@@ -736,7 +754,7 @@ a {
   font-size: 42px;
   line-height: 130%;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .count-number {
@@ -753,7 +771,7 @@ a {
   font-size: 18px;
   line-height: 130%;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .line {
@@ -828,7 +846,7 @@ a {
   font-size: 40px;
   line-height: 120%;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .research-item-paragraph {
@@ -837,7 +855,7 @@ a {
   font-size: 20px;
   line-height: 125%;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .swiper-container {
@@ -901,7 +919,7 @@ a {
   font-family: 'Helveticaneue Regular', sans-serif;
   font-size: 22px;
   line-height: 135%;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .testimonial-author-name {
@@ -909,7 +927,7 @@ a {
   font-family: 'Helveticaneue Regular', sans-serif;
   line-height: 18px;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .paragraph-3 {
@@ -917,7 +935,7 @@ a {
   font-family: 'Helveticaneue Regular', sans-serif;
   color: rgba(0, 0, 0, 0.6);
   line-height: 14px;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .event-area {
@@ -962,7 +980,7 @@ a {
   font-size: 28px;
   line-height: 100%;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .event-tab-content-title {
@@ -972,7 +990,7 @@ a {
   font-size: 36px;
   line-height: 130%;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .paragraph-4 {
@@ -982,7 +1000,7 @@ a {
   color: #000;
   font-size: 18px;
   line-height: 135%;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .event-image {
@@ -1049,11 +1067,11 @@ a {
   margin-top: 0px;
   margin-bottom: 40px;
   font-family: 'Helveticaneue Regular', sans-serif;
-  color: #fff;
+  color: #fca206;
   font-size: 24px;
   line-height: 24px;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .copyright-text {
@@ -1061,7 +1079,7 @@ a {
   font-family: 'Helveticaneue Regular', sans-serif;
   color: hsla(0, 0%, 100%, 0.5);
   text-align: center;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .news-post-wrap {
@@ -1094,7 +1112,7 @@ a {
   color: rgba(0, 0, 0, 0.3);
   font-size: 32px;
   line-height: 100%;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .events-tab-link:hover {
@@ -1399,7 +1417,7 @@ a {
   padding-bottom: 18px;
   text-align: left;
   text-decoration: none;
-  text-transform: capitalize;
+  text-transform: initial;
 }
 
 .nav-ink-2 {
@@ -1879,7 +1897,7 @@ a {
   }
 
   .banner-title {
-    font-size: 100px;
+    font-size: 70px;
     padding-right: 50px;
   }
 
@@ -2112,7 +2130,7 @@ a {
     color: #000;
     font-size: 18px;
     line-height: 135%;
-    text-transform: capitalize;
+    text-transform: initial;
   }
 
   .event-image {
@@ -2141,14 +2159,14 @@ a {
     font-size: 24px;
     line-height: 36px;
     font-weight: 500;
-    text-transform: capitalize;
+    text-transform: initial;
   }
 
   .copyright-text {
     margin-bottom: 0px;
     font-size: 16px;
     line-height: 32px;
-    text-transform: capitalize;
+    text-transform: initial;
   }
 
   .news-post-wrap {
@@ -2167,7 +2185,7 @@ a {
     margin-bottom: 36px;
     font-family: 'Helveticaneue Regular', sans-serif;
     font-size: 36px;
-    text-transform: capitalize;
+    text-transform: initial;
   }
 
   .events-tab {
@@ -2313,7 +2331,7 @@ a {
   }
 
   .banner-title {
-    font-size: 80px;
+    font-size: 70px;
     line-height: 84px;
   }
 
@@ -2799,11 +2817,12 @@ a {
   }
 
   .banner-title {
-    font-size: 68px;
+    font-size: 50px;
   }
 
   .banner-paragraph {
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 18px;
   }
 
   .section-title {
@@ -3024,8 +3043,8 @@ a {
   }
 
   .banner-title {
-    font-size: 52px;
-    line-height: 62px;
+    font-size: 40px;
+    line-height: 40px;
   }
 
   .section-title {

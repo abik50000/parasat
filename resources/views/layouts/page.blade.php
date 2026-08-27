@@ -7,36 +7,68 @@
     /* Hero */
     .page-hero-area {
         background: linear-gradient(135deg, #012c68 0%, #01409a 100%);
-        padding: 180px 0 64px;
+        padding: 132px 0 52px;
     }
-    .page-hero-label {
-        font-size: 13px;
-        letter-spacing: 2px;
+    .page-crumbs {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 9px;
+        font-size: 12px;
+        letter-spacing: 1.5px;
         text-transform: uppercase;
+        margin-bottom: 22px;
         opacity: 0;
-        margin-bottom: 12px;
-        color: #fff;
-        animation: heroFadeDown 0.7s cubic-bezier(0, 0.37, 0.27, 0.995) 0.1s forwards;
+        animation: heroFadeDown 0.6s cubic-bezier(0, 0.37, 0.27, 0.995) 0.1s forwards;
+    }
+    .page-crumbs a,
+    .page-crumbs span { color: rgba(255, 255, 255, 0.6); text-decoration: none; transition: color .15s; }
+    .page-crumbs a:hover { color: #fff; }
+    .page-crumbs .sep { color: rgba(255, 255, 255, 0.3); }
+    .page-crumbs .current { color: #fca206; }
+    .page-hero-main {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 48px;
+        flex-wrap: wrap;
     }
     .page-hero-title {
-        font-size: 48px;
+        font-size: 52px;
         font-weight: 700;
         margin: 0;
-        line-height: 1.2;
+        line-height: 1.15;
         color: #fff;
+        flex: 1 1 auto;
         opacity: 0;
         animation: heroFadeUp 0.7s cubic-bezier(0, 0.37, 0.27, 0.995) 0.18s forwards;
     }
+    .page-hero-desc {
+        flex: 0 1 440px;
+        max-width: 440px;
+        margin: 0 0 8px;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 15px;
+        line-height: 1.7;
+        opacity: 0;
+        animation: heroFadeUp 0.7s cubic-bezier(0, 0.37, 0.27, 0.995) 0.28s forwards;
+    }
     @keyframes heroFadeDown {
-        from { transform: translateY(-50px); opacity: 0; }
-        to   { transform: translateY(0);     opacity: 0.65; }
+        from { transform: translateY(-30px); opacity: 0; }
+        to   { transform: translateY(0);     opacity: 1; }
     }
     @keyframes heroFadeUp {
-        from { transform: translateY(60px); opacity: 0; }
+        from { transform: translateY(40px); opacity: 0; }
         to   { transform: translateY(0);    opacity: 1; }
     }
+    @media (max-width: 900px) {
+        .page-hero-main { gap: 20px; }
+        .page-hero-desc { flex-basis: 100%; max-width: 640px; }
+    }
     @media (max-width: 768px) {
-        .page-hero-area { padding: 120px 0 40px; }
+        .page-hero-area { padding: 104px 0 40px; }
+        .page-hero-title { font-size: 30px; }
+        .page-crumbs { margin-bottom: 16px; }
     }
 
     /* Content wrapper */
@@ -481,11 +513,26 @@
 @section('content')
 <x-header />
 
+@php
+    $crumbSegments = array_values(array_filter(array_map(
+        'trim',
+        preg_split('#[→/›»|]#u', trim($__env->yieldContent('breadcrumb', '')))
+    )));
+@endphp
 <div class="page-hero-area">
     <div class="container">
-        <div style="color:#fff; text-align:center;">
-            <p class="page-hero-label">@yield('breadcrumb', 'Parasat Ақжайық')</p>
+        <nav class="page-crumbs" aria-label="breadcrumb">
+            <a href="{{ route('home') }}">{{ __('nav.home') }}</a>
+            @foreach($crumbSegments as $seg)
+                <span class="sep">/</span>
+                <span class="{{ $loop->last ? 'current' : '' }}">{{ $seg }}</span>
+            @endforeach
+        </nav>
+        <div class="page-hero-main">
             <h1 class="page-hero-title">@yield('title')</h1>
+            @hasSection('page-desc')
+                <p class="page-hero-desc">@yield('page-desc')</p>
+            @endif
         </div>
     </div>
 </div>

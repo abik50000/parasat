@@ -2,21 +2,9 @@
 
 @section('breadcrumb', __('page.vacancies.breadcrumb'))
 @section('title', __('page.vacancies.title'))
+@section('page-desc', __('pages.vacancies.intro'))
 
 @section('page-content')
-
-<div class="section-cotent-wrap grid-item mb-100" style="margin-bottom:56px;">
-    <div class="grid-one">
-        <p class="section-paragraph red" data-anim="fade-right">{{ __('pages.vacancies.section_label') }}</p>
-    </div>
-    <div class="grid-two">
-        <h2 class="section-title dark" data-anim="fade-up">{{ __('pages.vacancies.heading1') }}</h2>
-        <h2 class="section-title dark" data-anim="fade-up" data-anim-delay="80">{{ __('pages.vacancies.heading2') }}</h2>
-        <p class="banner-paragraph dark" data-anim="fade-up" data-anim-delay="160" style="margin-top:24px;">
-            {{ __('pages.vacancies.intro') }}
-        </p>
-    </div>
-</div>
 
 <figure class="page-figure" data-anim="fade-up">
     <img src="{{ asset('images/parasat/school_outside2.jpg') }}" alt="{{ __('pages.vacancies.heading1') }}" loading="lazy">
