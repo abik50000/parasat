@@ -1,8 +1,61 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('index'))->name('home');
+
+/*
+|--------------------------------------------------------------------------
+| Временный деплой-роут (на хостинге нет SSH)
+|--------------------------------------------------------------------------
+| Запускает whitelist artisan-команд через браузер.
+| Включается только если в .env задан DEPLOY_KEY.
+|
+|   https://<сайт>/__deploy?key=<DEPLOY_KEY>              — список команд
+|   https://<сайт>/__deploy/migrate?key=<DEPLOY_KEY>      — конкретная команда
+|
+| УДАЛИТЬ этот блок (или убрать DEPLOY_KEY из .env) после настройки сервера.
+*/
+Route::get('/__deploy/{command?}', function (Illuminate\Http\Request $request, ?string $command = null) {
+    $key = config('app.deploy_key');
+    abort_if(blank($key), 404);
+    abort_unless(is_string($request->query('key')) && hash_equals($key, $request->query('key')), 403, 'Bad key');
+
+    $commands = [
+        'clear'          => ['optimize:clear', []],                 // config+cache+route+view+events
+        'config-clear'   => ['config:clear', []],
+        'cache-clear'    => ['cache:clear', []],
+        'route-clear'    => ['route:clear', []],
+        'view-clear'     => ['view:clear', []],
+        'cache-build'    => ['optimize', []],                       // config+route+view cache
+        'migrate'        => ['migrate', ['--force' => true]],
+        'migrate-status' => ['migrate:status', []],
+        'seed-news'      => ['db:seed', ['--class' => 'Database\Seeders\NewsSeeder', '--force' => true]],
+        'storage-link'   => ['storage:link', []],
+        'about'          => ['about', []],
+    ];
+
+    if ($command === null) {
+        return response("Доступные команды:\n  ".implode("\n  ", array_keys($commands))
+            ."\n\nВызов: /__deploy/<команда>?key=...", 200)
+            ->header('Content-Type', 'text/plain; charset=utf-8');
+    }
+
+    abort_unless(isset($commands[$command]), 404, 'Неизвестная команда');
+    [$artisan, $params] = $commands[$command];
+
+    try {
+        $exit = Artisan::call($artisan, $params);
+        $body = "$ php artisan $artisan\n\n".Artisan::output()."\n[exit $exit]";
+        $status = $exit === 0 ? 200 : 500;
+    } catch (\Throwable $e) {
+        $body = "$ php artisan $artisan\n\nОШИБКА: ".$e->getMessage();
+        $status = 500;
+    }
+
+    return response($body, $status)->header('Content-Type', 'text/plain; charset=utf-8');
+})->where('command', '[a-z-]+');
 
 Route::get('/lang/{locale}', function ($locale) {
     if (in_array($locale, ['kz', 'ru', 'en'])) {

@@ -51,17 +51,43 @@ php artisan config:cache && php artisan route:cache && php artisan view:cache
 Если `php` в консоли — не та версия, обычно есть `php82` / `php8.3` / полный путь
 `/usr/local/bin/ea-php83` (уточнить в панели).
 
-### Вариант Б — только phpMyAdmin, CLI нет
+### Вариант Б — CLI нет, но есть браузер (веб-роут `/__deploy`)
 
-1. phpMyAdmin → выбрать созданную базу → вкладка **«Импорт»** → залить
-   **`deploy/parasat-db.sql`** (все таблицы + миграции + 3 новости).
-2. Затем импортировать **`deploy/create-admin.sql`** — создаст вход
+В `routes/web.php` есть временный роут для запуска artisan-команд через URL.
+Включается заданием секрета в `.env`:
+
+```
+DEPLOY_KEY=любая-длинная-случайная-строка
+```
+
+Затем в браузере (по очереди):
+
+```
+https://test.parasat-aj.kz/__deploy?key=СЕКРЕТ                 → список команд
+https://test.parasat-aj.kz/__deploy/migrate?key=СЕКРЕТ         → создать таблицы
+https://test.parasat-aj.kz/__deploy/seed-news?key=СЕКРЕТ       → 3 стартовые новости
+https://test.parasat-aj.kz/__deploy/storage-link?key=СЕКРЕТ    → симлинк для картинок
+https://test.parasat-aj.kz/__deploy/clear?key=СЕКРЕТ           → сбросить кеши
+https://test.parasat-aj.kz/__deploy/cache-build?key=СЕКРЕТ     → собрать кеши (ускорение)
+```
+
+Аккаунт админа: импортировать `deploy/create-admin.sql` через phpMyAdmin
+(`make:filament-user` из браузера не запустить).
+
+**После настройки:** убрать `DEPLOY_KEY` из `.env` (роут сразу отключится) или
+удалить блок `/__deploy` из `routes/web.php`.
+
+### Вариант В — только phpMyAdmin
+
+1. phpMyAdmin → выбрать базу → **«Импорт»** → залить **`deploy/parasat-db.sql`**
+   (все таблицы + миграции + 3 новости).
+2. Затем импортировать **`deploy/create-admin.sql`** — вход
    `admin@parasat-aj.kz` / `Parasat2026!` (**сменить пароль после входа**).
-3. Символическую ссылку `public/storage` phpMyAdmin не сделает. Варианты:
-   - создать вручную через SSH/файловый менеджер: `public/storage` → `../storage/app/public`;
-   - или в `config/filesystems.php` у диска `public` временно поставить
-     `'root' => public_path('storage')` и `'url' => '/storage'` без симлинка,
-     и просто создать папку `public/storage/news`.
+3. Симлинк `public/storage` phpMyAdmin не сделает. Варианты:
+   - создать вручную через файловый менеджер: `public/storage` → `../storage/app/public`;
+   - или в `config/filesystems.php` у диска `public` поставить
+     `'root' => public_path('storage')`, `'url' => '/storage'` и создать папку
+     `public/storage/news`.
 
 ## 6. Права на папки
 
