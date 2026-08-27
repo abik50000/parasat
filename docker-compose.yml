@@ -1,0 +1,60 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: parasat_app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/vendor
+    environment:
+      - PHP_OPCACHE_ENABLE=0
+    networks:
+      - parasat_net
+    depends_on:
+      db:
+        condition: service_healthy
+
+  nginx:
+    image: nginx:alpine
+    container_name: parasat_nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - parasat_net
+    depends_on:
+      - app
+
+  db:
+    image: mariadb:11
+    container_name: parasat_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: parasat
+      MYSQL_USER: parasat
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root_secret
+    volumes:
+      - parasat_db:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - parasat_net
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  parasat_net:
+    driver: bridge
+
+volumes:
+  parasat_db:
