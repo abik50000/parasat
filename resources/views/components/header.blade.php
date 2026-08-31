@@ -374,7 +374,7 @@
             </style>
         </div>
         @php
-            $aboutActive = request()->routeIs('about', 'mission', 'administration', 'teachers', 'gallery', 'self-assessment', 'vacancies', 'contacts') ? 'is-active' : '';
+            $aboutActive = request()->routeIs('about', 'mission', 'administration', 'teachers', 'gallery', 'self-assessment', 'documents', 'vacancies', 'contacts') ? 'is-active' : '';
             $eduActive   = request()->routeIs('education', 'curriculum', 'schedule', 'clil', 'clubs', 'assessment-schedule', 'ent-results', 'cafeteria') ? 'is-active' : '';
         @endphp
         <div class="navbar-no-shadow wf-section">
@@ -398,6 +398,7 @@
                                         <a href="{{ route('teachers') }}">{{ __('nav.teachers') }}</a>
                                         <a href="{{ route('gallery') }}">{{ __('nav.gallery') }}</a>
                                         <a href="{{ route('self-assessment') }}">{{ __('nav.self_assessment') }}</a>
+                                        <a href="{{ route('documents') }}">{{ __('nav.documents') }}</a>
                                         <a href="{{ route('vacancies') }}">{{ __('nav.vacancies') }}</a>
                                         <a href="{{ route('contacts') }}">{{ __('nav.contacts') }}</a>
                                     </div>

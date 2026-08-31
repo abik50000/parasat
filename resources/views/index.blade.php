@@ -92,7 +92,7 @@
             <div class="container banner">
                 <div class="banner-inner">
                     <div class="banner-thumbnail-wrap">
-                        <img data-anim="scale-in" src="/images/parasat/school_outside3.jpg" loading="lazy" alt="Школа Парасат Ақжайық" class="banner-thumb"/>
+                        <img data-anim="scale-in" src="/images/parasat/school_outside5.jpg" loading="lazy" alt="Школа Парасат Ақжайық" class="banner-thumb"/>
                     </div>
                     <div class="banner-content">
                         <h1 data-anim="fade-up" class="banner-title">

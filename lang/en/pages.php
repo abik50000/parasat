@@ -155,6 +155,17 @@ return [
         ],
     ],
 
+    // ── documents ──────────────────────────────────────────────────────────
+    'documents' => [
+        'section_label' => 'About School',
+        'intro'         => 'Official documents of Parasat Ақжайық school — founding documents, licences, internal regulations and reports, available to view and download.',
+        'lead'          => 'Below are the school\'s official documents, grouped by section. Click a card to open a file, or use the download button.',
+        'empty'         => 'Documents will appear in this section soon.',
+        'open'          => 'Open',
+        'download'      => 'Download',
+        'note'          => 'Documents are published for information purposes. Certified copies can be obtained from the school office.',
+    ],
+
     // ── education ──────────────────────────────────────────────────────────
     'education' => [
         'section_label' => 'Education',

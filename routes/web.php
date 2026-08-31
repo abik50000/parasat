@@ -32,6 +32,7 @@ Route::get('/__deploy/{command?}', function (Illuminate\Http\Request $request, ?
         'migrate'        => ['migrate', ['--force' => true]],
         'migrate-status' => ['migrate:status', []],
         'seed-news'      => ['db:seed', ['--class' => 'Database\Seeders\NewsSeeder', '--force' => true]],
+        'seed-documents' => ['db:seed', ['--class' => 'Database\Seeders\DocumentCategorySeeder', '--force' => true]],
         'storage-link'   => ['storage:link', []],
         'about'          => ['about', []],
     ];
@@ -70,6 +71,16 @@ Route::get('/about/mission', fn () => view('pages.mission'))->name('mission');
 Route::get('/about/administration', fn () => view('pages.administration'))->name('administration');
 Route::get('/about/teachers', fn () => view('pages.teachers'))->name('teachers');
 Route::get('/about/self-assessment', fn () => view('pages.self-assessment'))->name('self-assessment');
+Route::get('/about/documents', function () {
+    return view('pages.documents', [
+        'categories' => \App\Models\DocumentCategory::published()
+            ->ordered()
+            ->with(['publishedDocuments'])
+            ->get()
+            ->filter(fn ($category) => $category->publishedDocuments->isNotEmpty())
+            ->values(),
+    ]);
+})->name('documents');
 Route::get('/contacts', fn () => view('pages.contacts'))->name('contacts');
 
 // Учебный процесс
