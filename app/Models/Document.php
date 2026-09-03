@@ -29,9 +29,9 @@ class Document extends Model
         'txt' => 'text',
     ];
 
-    public function category(): BelongsTo
+    public function folder(): BelongsTo
     {
-        return $this->belongsTo(DocumentCategory::class, 'document_category_id');
+        return $this->belongsTo(DocumentFolder::class, 'document_folder_id');
     }
 
     public function scopePublished(Builder $query): Builder

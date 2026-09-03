@@ -2,28 +2,30 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\DocumentCategoryResource\Pages;
-use App\Filament\Resources\DocumentCategoryResource\RelationManagers\DocumentsRelationManager;
-use App\Models\DocumentCategory;
+use App\Filament\Resources\DocumentFolderResource\Pages;
+use App\Filament\Resources\DocumentFolderResource\RelationManagers\DocumentsRelationManager;
+use App\Models\DocumentFolder;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class DocumentCategoryResource extends Resource
+class DocumentFolderResource extends Resource
 {
-    protected static ?string $model = DocumentCategory::class;
+    protected static ?string $model = DocumentFolder::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-folder-open';
+    protected static ?string $navigationIcon = 'heroicon-o-folder';
 
-    protected static ?string $navigationLabel = 'Документы';
+    protected static ?string $navigationGroup = 'Аттестация';
 
-    protected static ?string $modelLabel = 'группа документов';
+    protected static ?string $navigationLabel = 'Папки';
 
-    protected static ?string $pluralModelLabel = 'Документы';
+    protected static ?string $modelLabel = 'папка';
 
-    protected static ?int $navigationSort = 2;
+    protected static ?string $pluralModelLabel = 'Папки';
+
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -31,9 +33,17 @@ class DocumentCategoryResource extends Resource
             Forms\Components\Section::make()
                 ->columns(2)
                 ->schema([
+                    Forms\Components\Select::make('parent_id')
+                        ->label('Родительская папка')
+                        ->placeholder('— Корень (Аттестация) —')
+                        ->options(fn (?DocumentFolder $record) => DocumentFolder::parentOptions($record?->id))
+                        ->searchable()
+                        ->native(false)
+                        ->helperText('Оставьте пустым, чтобы папка была на верхнем уровне.'),
+
                     Forms\Components\TextInput::make('sort')
                         ->label('Порядок')
-                        ->helperText('Чем меньше число, тем выше группа на странице.')
+                        ->helperText('Чем меньше число, тем выше папка в списке.')
                         ->numeric()
                         ->default(0),
 
@@ -42,7 +52,7 @@ class DocumentCategoryResource extends Resource
                         ->default(true),
                 ]),
 
-            Forms\Components\Tabs::make('Название группы')
+            Forms\Components\Tabs::make('Название папки')
                 ->columnSpanFull()
                 ->tabs([
                     Forms\Components\Tabs\Tab::make('Русский')->schema([
@@ -70,13 +80,20 @@ class DocumentCategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title_ru')
-                    ->label('Группа')
+                    ->label('Папка')
+                    ->description(fn (DocumentFolder $record) => $record->parent_id ? $record->titlePath() : null)
                     ->searchable()
                     ->weight('bold'),
 
+                Tables\Columns\TextColumn::make('children_count')
+                    ->counts('children')
+                    ->label('Подпапок')
+                    ->badge()
+                    ->color('gray'),
+
                 Tables\Columns\TextColumn::make('documents_count')
-                    ->label('Файлов')
                     ->counts('documents')
+                    ->label('Файлов')
                     ->badge()
                     ->color('gray'),
 
@@ -87,6 +104,9 @@ class DocumentCategoryResource extends Resource
             ->defaultSort('sort')
             ->reorderable('sort')
             ->filters([
+                Tables\Filters\SelectFilter::make('parent_id')
+                    ->label('Родительская папка')
+                    ->options(fn () => DocumentFolder::parentOptions()),
                 Tables\Filters\TernaryFilter::make('is_published')
                     ->label('Опубликовано'),
             ])
@@ -111,9 +131,9 @@ class DocumentCategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListDocumentCategories::route('/'),
-            'create' => Pages\CreateDocumentCategory::route('/create'),
-            'edit' => Pages\EditDocumentCategory::route('/{record}/edit'),
+            'index' => Pages\ListDocumentFolders::route('/'),
+            'create' => Pages\CreateDocumentFolder::route('/create'),
+            'edit' => Pages\EditDocumentFolder::route('/{record}/edit'),
         ];
     }
 }

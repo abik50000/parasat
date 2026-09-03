@@ -155,14 +155,18 @@ return [
         ],
     ],
 
-    // ── documents ──────────────────────────────────────────────────────────
-    'documents' => [
+    // ── attestation ────────────────────────────────────────────────────────
+    'attestation' => [
         'section_label' => 'About School',
-        'intro'         => 'Official documents of Parasat Ақжайық school — founding documents, licences, internal regulations and reports, available to view and download.',
-        'lead'          => 'Below are the school\'s official documents, grouped by section. Click a card to open a file, or use the download button.',
-        'empty'         => 'Documents will appear in this section soon.',
+        'root'          => 'Attestation',
+        'intro'         => 'Materials on the attestation of teachers and of the school. Documents are arranged in folders — like a file explorer.',
+        'lead'          => 'Open a folder to see its sub-folders and files. The "Back" button and the breadcrumbs take you one level up. A file can be opened for viewing or downloaded.',
+        'back'          => 'Back',
+        'empty'         => 'There are no folders or documents here yet.',
+        'empty_folder'  => 'This folder has no documents yet.',
         'open'          => 'Open',
         'download'      => 'Download',
+        'no_js'         => 'Enable JavaScript to browse folders. Below is the full list of files.',
         'note'          => 'Documents are published for information purposes. Certified copies can be obtained from the school office.',
     ],
 

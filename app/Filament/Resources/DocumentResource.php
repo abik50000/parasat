@@ -1,25 +1,33 @@
 <?php
 
-namespace App\Filament\Resources\DocumentCategoryResource\RelationManagers;
+namespace App\Filament\Resources;
 
+use App\Filament\Resources\DocumentResource\Pages;
 use App\Models\Document;
+use App\Models\DocumentFolder;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class DocumentsRelationManager extends RelationManager
+class DocumentResource extends Resource
 {
-    protected static string $relationship = 'documents';
+    protected static ?string $model = Document::class;
 
-    protected static ?string $title = 'Файлы';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+
+    protected static ?string $navigationGroup = 'Аттестация';
+
+    protected static ?string $navigationLabel = 'Файлы';
 
     protected static ?string $modelLabel = 'файл';
 
     protected static ?string $pluralModelLabel = 'Файлы';
 
-    /** Extension → badge colour, mirrors Document::iconType(). */
+    protected static ?int $navigationSort = 2;
+
+    /** Icon type → badge colour, mirrors Document::iconType(). */
     protected const TYPE_COLORS = [
         'pdf' => 'danger',
         'word' => 'info',
@@ -31,13 +39,22 @@ class DocumentsRelationManager extends RelationManager
         'file' => 'gray',
     ];
 
-    public function form(Form $form): Form
+    public static function form(Form $form): Form
     {
         return $form->schema([
+            Forms\Components\Select::make('document_folder_id')
+                ->label('Папка')
+                ->options(fn () => DocumentFolder::parentOptions())
+                ->searchable()
+                ->native(false)
+                ->required()
+                ->helperText('Папки создаются в разделе «Аттестация → Папки».')
+                ->columnSpanFull(),
+
             Forms\Components\FileUpload::make('file')
                 ->label('Файл')
                 ->disk('public')
-                ->directory('documents')
+                ->directory('attestation')
                 ->visibility('public')
                 ->storeFileNamesIn('original_name')
                 ->downloadable()
@@ -81,10 +98,9 @@ class DocumentsRelationManager extends RelationManager
         ]);
     }
 
-    public function table(Table $table): Table
+    public static function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('title_ru')
             ->columns([
                 Tables\Columns\TextColumn::make('title_ru')
                     ->label('Название')
@@ -92,11 +108,11 @@ class DocumentsRelationManager extends RelationManager
                     ->weight('bold')
                     ->wrap(),
 
-                Tables\Columns\TextColumn::make('original_name')
-                    ->label('Файл')
-                    ->getStateUsing(fn (Document $record) => $record->fileName())
-                    ->color('gray')
-                    ->limit(40),
+                Tables\Columns\TextColumn::make('folder_path')
+                    ->label('Папка')
+                    ->getStateUsing(fn (Document $record) => $record->folder?->titlePath() ?? '—')
+                    ->badge()
+                    ->color('gray'),
 
                 Tables\Columns\TextColumn::make('type')
                     ->label('Тип')
@@ -108,11 +124,13 @@ class DocumentsRelationManager extends RelationManager
                     ->label('На сайте')
                     ->boolean(),
             ])
-            ->defaultSort('sort')
-            ->reorderable('sort')
-            ->headerActions([
-                Tables\Actions\CreateAction::make()
-                    ->label('Добавить файл'),
+            ->defaultSort('id', 'desc')
+            ->filters([
+                Tables\Filters\SelectFilter::make('document_folder_id')
+                    ->label('Папка')
+                    ->options(fn () => DocumentFolder::parentOptions()),
+                Tables\Filters\TernaryFilter::make('is_published')
+                    ->label('Опубликовано'),
             ])
             ->actions([
                 Tables\Actions\Action::make('download')
@@ -128,5 +146,14 @@ class DocumentsRelationManager extends RelationManager
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListDocuments::route('/'),
+            'create' => Pages\CreateDocument::route('/create'),
+            'edit' => Pages\EditDocument::route('/{record}/edit'),
+        ];
     }
 }

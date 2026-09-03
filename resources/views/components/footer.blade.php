@@ -74,7 +74,7 @@
                         [__('nav.administration'),     route('administration')],
                         [__('nav.teachers'),           route('teachers')],
                         [__('nav.self_assessment'),    route('self-assessment')],
-                        [__('nav.documents'),          route('documents')],
+                        [__('nav.attestation'),        route('attestation')],
                     ],
                 ],
                 [

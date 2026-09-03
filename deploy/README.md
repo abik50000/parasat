@@ -43,7 +43,7 @@ document root на `.../public`.
 cd ~/путь/к/проекту
 php artisan migrate --force
 php artisan db:seed --class=NewsSeeder --force      # 3 стартовые новости (необязательно)
-php artisan db:seed --class=DocumentCategorySeeder --force  # стартовые группы документов (необязательно)
+php artisan db:seed --class=DocumentFolderSeeder --force  # стартовые папки раздела «Аттестация» (необязательно)
 php artisan make:filament-user                       # аккаунт для /admin
 php artisan storage:link                             # чтобы показывались загруженные картинки
 php artisan config:cache && php artisan route:cache && php artisan view:cache
@@ -67,7 +67,7 @@ DEPLOY_KEY=любая-длинная-случайная-строка
 https://test.parasat-aj.kz/__deploy?key=СЕКРЕТ                 → список команд
 https://test.parasat-aj.kz/__deploy/migrate?key=СЕКРЕТ         → создать таблицы
 https://test.parasat-aj.kz/__deploy/seed-news?key=СЕКРЕТ       → 3 стартовые новости
-https://test.parasat-aj.kz/__deploy/seed-documents?key=СЕКРЕТ  → стартовые группы документов
+https://test.parasat-aj.kz/__deploy/seed-attestation?key=СЕКРЕТ → стартовые папки раздела «Аттестация»
 https://test.parasat-aj.kz/__deploy/storage-link?key=СЕКРЕТ    → симлинк для картинок
 https://test.parasat-aj.kz/__deploy/clear?key=СЕКРЕТ           → сбросить кеши
 https://test.parasat-aj.kz/__deploy/cache-build?key=СЕКРЕТ     → собрать кеши (ускорение)
