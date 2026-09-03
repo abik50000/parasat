@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Forms\DocumentFields;
 use App\Filament\Resources\DocumentResource\Pages;
 use App\Models\Document;
 use App\Models\DocumentFolder;
@@ -51,50 +52,7 @@ class DocumentResource extends Resource
                 ->helperText('Папки создаются в разделе «Аттестация → Папки».')
                 ->columnSpanFull(),
 
-            Forms\Components\FileUpload::make('file')
-                ->label('Файл')
-                ->disk('public')
-                ->directory('attestation')
-                ->visibility('public')
-                ->storeFileNamesIn('original_name')
-                ->downloadable()
-                ->openable()
-                ->maxSize(51200)
-                ->required()
-                ->columnSpanFull(),
-
-            Forms\Components\Tabs::make('Название файла')
-                ->columnSpanFull()
-                ->tabs([
-                    Forms\Components\Tabs\Tab::make('Русский')->schema([
-                        Forms\Components\TextInput::make('title_ru')
-                            ->label('Название')
-                            ->helperText('Показывается посетителям вместо имени файла.')
-                            ->required()
-                            ->maxLength(255),
-                    ]),
-                    Forms\Components\Tabs\Tab::make('Қазақша')->schema([
-                        Forms\Components\TextInput::make('title_kz')
-                            ->label('Название')
-                            ->maxLength(255),
-                    ]),
-                    Forms\Components\Tabs\Tab::make('English')->schema([
-                        Forms\Components\TextInput::make('title_en')
-                            ->label('Название')
-                            ->maxLength(255),
-                    ]),
-                ]),
-
-            Forms\Components\Grid::make(2)->schema([
-                Forms\Components\TextInput::make('sort')
-                    ->label('Порядок')
-                    ->numeric()
-                    ->default(0),
-
-                Forms\Components\Toggle::make('is_published')
-                    ->label('Показывать на сайте')
-                    ->default(true),
-            ]),
+            ...DocumentFields::make(),
         ]);
     }
 

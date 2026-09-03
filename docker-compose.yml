@@ -9,6 +9,7 @@ services:
     volumes:
       - .:/var/www/html
       - /var/www/html/vendor
+      - ./docker/php/uploads.ini:/usr/local/etc/php/conf.d/zz-uploads.ini:ro
     environment:
       - PHP_OPCACHE_ENABLE=0
     networks:

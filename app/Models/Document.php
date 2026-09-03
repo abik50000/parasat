@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
@@ -32,6 +33,24 @@ class Document extends Model
     public function folder(): BelongsTo
     {
         return $this->belongsTo(DocumentFolder::class, 'document_folder_id');
+    }
+
+    /**
+     * Virtual attribute for the admin form: lets a file be given as an external
+     * URL instead of an upload. Reads back only when `file` actually holds a URL;
+     * writing a non-empty value stores it in the `file` column.
+     */
+    protected function fileUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn (): ?string => Str::startsWith((string) $this->file, ['http://', 'https://']) ? $this->file : null,
+            set: fn (?string $value): array => filled($value) ? ['file' => trim($value)] : [],
+        );
+    }
+
+    public function isExternal(): bool
+    {
+        return Str::startsWith((string) $this->file, ['http://', 'https://']);
     }
 
     public function scopePublished(Builder $query): Builder

@@ -8,6 +8,19 @@
 `pdo_mysql, mbstring, openssl, bcmath, ctype, fileinfo, tokenizer, xml, curl, gd, intl, zip`
 (на большинстве хостингов включены по умолчанию).
 
+**Лимиты загрузки** (для файлов раздела «Аттестация» — до 50 МБ). В панели
+(PHP options / PHP Selector) или через `.user.ini` в корне сайта:
+
+```
+upload_max_filesize = 50M
+post_max_size = 55M
+memory_limit = 256M
+max_execution_time = 300
+```
+
+Если сервер на nginx — в конфиге домена также `client_max_body_size 55M;`.
+Лимит Livewire (12 МБ по умолчанию) уже поднят в `config/livewire.php` и едет с кодом.
+
 ## 2. Создать базу данных
 
 Панель хостинга → **«Базы данных MySQL»** (cPanel) / **«Базы данных»** (ISPmanager):
