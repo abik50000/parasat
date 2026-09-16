@@ -7,7 +7,32 @@
 @section('page-content')
 
 <style>
-    .att-lead { margin-bottom: 40px; }
+    .att-lead-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 40px;
+    }
+    .att-lead { margin-bottom: 0; }
+    .att-disk-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+        padding: 10px 18px;
+        background: #f4f7fb;
+        border: 1px solid #e8edf5;
+        border-radius: 10px;
+        color: #012c68;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background .15s, border-color .15s;
+    }
+    .att-disk-link:hover { background: #eef2f8; border-color: #cdd8e8; }
+    .att-disk-link__ico { width: 18px; height: 18px; flex-shrink: 0; display: block; }
 
     /* ── Toolbar: back button + breadcrumbs ── */
     .att-bar {
@@ -214,6 +239,7 @@
     @media (max-width: 520px) {
         .att-grid { grid-template-columns: 1fr; }
         .att-bar { padding: 10px; }
+        .att-lead-row { flex-direction: column; align-items: flex-start; }
     }
 </style>
 
@@ -233,7 +259,20 @@
     ];
 @endphp
 
-<p class="page-body-text att-lead" data-anim="fade-up">{{ __('pages.attestation.lead') }}</p>
+<div class="att-lead-row" data-anim="fade-up">
+    <p class="page-body-text att-lead">{{ __('pages.attestation.lead') }}</p>
+    <a href="https://drive.google.com/drive/u/1/folders/14wKl49prn17NU9nzWG9TfLFffqJlpce8?hl=ru" target="_blank" rel="noopener noreferrer" class="att-disk-link">
+        <svg class="att-disk-link__ico" viewBox="0 0 87.3 78" aria-hidden="true">
+            <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+            <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44a9.06 9.06 0 0 0 -1.2 4.5h27.5z" fill="#00ac47"/>
+            <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+            <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/>
+            <path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/>
+            <path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/>
+        </svg>
+        <span>{{ __('pages.attestation.disk_link') }}</span>
+    </a>
+</div>
 
 <div id="att-app" data-anim="fade-up">
     <div class="att-bar">

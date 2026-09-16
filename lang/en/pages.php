@@ -168,6 +168,7 @@ return [
         'download'      => 'Download',
         'no_js'         => 'Enable JavaScript to browse folders. Below is the full list of files.',
         'note'          => 'Documents are published for information purposes. Certified copies can be obtained from the school office.',
+        'disk_link'     => 'View DISK',
     ],
 
     // ── education ──────────────────────────────────────────────────────────
