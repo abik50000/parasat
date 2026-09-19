@@ -67,7 +67,7 @@
     .about-lead {
         font-size: 14px;
     }
-    .about-image hr {
+    .about-image.hr {
         display:none;
     }
 }
