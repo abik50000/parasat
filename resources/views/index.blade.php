@@ -160,7 +160,7 @@
                         </div>
                         <p class="uv-thumbnail-desc">{{ __('pages.index.thumb_steam_desc') }}</p>
                     </div>
-                    <div id="w-node-_4c5894b9-2514-f8a8-50ee-a0cde03ac028-6dbd672b" class="uv-single-item d-none"><div class="uv-thumbnail-wrap"><img src="/images/63b55ce64a8708b6ad30204b_Frame.png" loading="lazy" alt=""></div></div>
+                    <div id="w-node-_4c5894b9-2514-f8a8-50ee-a0cde03ac028-6dbd672b" class="uv-single-item d-none"><div class="uv-thumbnail-wrap xx"><img src="/images/63b55ce64a8708b6ad30204b_Frame.png" loading="lazy" alt=""></div></div>
                 </div>
             </div>
         </div>

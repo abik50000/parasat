@@ -453,6 +453,10 @@ a {
   text-align: center;
 }
 
+.uv-thumbnail-wrap.xx::after {
+  display: none !important;
+}
+
 .uv-thumbnail-title {
   position: absolute;
   left: 40px;
