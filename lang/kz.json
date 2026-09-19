@@ -35,7 +35,7 @@
     "page.self-assessment.title": "Мектептің өзін-өзі бағалауы",
     "page.self-assessment.breadcrumb": "Біз туралы → Өзін-өзі бағалау",
     "page.attestation.title": "Аттестациялау",
-    "page.attestation.breadcrumb": "Біз туралы → Аттестациялау",
+    "page.attestation.breadcrumb": "Аттестациялау",
     "page.gallery.title": "Фотогалерея",
     "page.gallery.breadcrumb": "Галерея",
     "page.administration.title": "Әкімшілік",
@@ -65,5 +65,5 @@
     "page.vacancies.title": "Бос орындар",
     "page.vacancies.breadcrumb": "Бос орындар",
     "page.faq.title": "Сұрақ-Жауап",
-    "page.faq.breadcrumb": "Сұрақ-Жауап"
+    "page.faq.breadcrumb": "Біз туралы → Сұрақ-Жауап"
 }

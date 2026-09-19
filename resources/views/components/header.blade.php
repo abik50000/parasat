@@ -374,7 +374,7 @@
             </style>
         </div>
         @php
-            $aboutActive = request()->routeIs('about', 'mission', 'administration', 'teachers', 'gallery', 'self-assessment', 'attestation', 'vacancies', 'contacts') ? 'is-active' : '';
+            $aboutActive = request()->routeIs('about', 'mission', 'administration', 'teachers', 'gallery', 'self-assessment', 'faq', 'vacancies', 'contacts') ? 'is-active' : '';
             $eduActive   = request()->routeIs('education', 'curriculum', 'schedule', 'clil', 'clubs', 'assessment-schedule', 'ent-results', 'cafeteria') ? 'is-active' : '';
         @endphp
         <div class="navbar-no-shadow wf-section">
@@ -398,7 +398,7 @@
                                         <a href="{{ route('teachers') }}">{{ __('nav.teachers') }}</a>
                                         <a href="{{ route('gallery') }}">{{ __('nav.gallery') }}</a>
                                         <a href="{{ route('self-assessment') }}">{{ __('nav.self_assessment') }}</a>
-                                        <a href="{{ route('attestation') }}">{{ __('nav.attestation') }}</a>
+                                        <a href="{{ route('faq') }}">{{ __('nav.faq') }}</a>
                                         <a href="{{ route('vacancies') }}">{{ __('nav.vacancies') }}</a>
                                         <a href="{{ route('contacts') }}">{{ __('nav.contacts') }}</a>
                                     </div>
@@ -413,14 +413,13 @@
                                         <a href="{{ route('assessment-schedule') }}">{{ __('nav.assessment') }}</a>
                                         <a href="{{ route('ent-results') }}">{{ __('nav.ent') }}</a>
                                         <a href="{{ route('cafeteria') }}">{{ __('nav.cafeteria') }}</a>
-                                        <a href="{{ route('faq') }}" class="lg:hidden">{{ __('nav.faq') }}</a>
                                     </div>
                                 </li>
                                 <li>
                                     <a href="{{ route('news') }}" class="nav-link {{ request()->routeIs('news') ? 'is-active' : '' }}">{{ __('nav.news') }}</a>
                                 </li>
                                 <li class="list-item-6">
-                                    <a href="{{ route('faq') }}" class="nav-link max-lg:hidden {{ request()->routeIs('faq') ? 'is-active' : '' }}">{{ __('nav.faq') }}</a>
+                                    <a href="{{ route('attestation') }}" class="nav-link {{ request()->routeIs('attestation') ? 'is-active' : '' }}">{{ __('nav.attestation') }}</a>
                                 </li>
                             </ul>
                             <div class="lang-switcher-mobile">

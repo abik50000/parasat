@@ -74,7 +74,7 @@
                         [__('nav.administration'),     route('administration')],
                         [__('nav.teachers'),           route('teachers')],
                         [__('nav.self_assessment'),    route('self-assessment')],
-                        [__('nav.attestation'),        route('attestation')],
+                        [__('nav.faq'),                route('faq')],
                     ],
                 ],
                 [
@@ -94,7 +94,7 @@
                         [__('nav.news'),      route('news')],
                         [__('nav.gallery'),   route('gallery')],
                         [__('nav.cafeteria'), route('cafeteria')],
-                        [__('nav.faq'),       route('faq')],
+                        [__('nav.attestation'), route('attestation')],
                     ],
                 ],
             ];

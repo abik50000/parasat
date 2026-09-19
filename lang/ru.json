@@ -35,7 +35,7 @@
     "page.self-assessment.title": "Самооценка школы",
     "page.self-assessment.breadcrumb": "О нас → Самооценка",
     "page.attestation.title": "Аттестация",
-    "page.attestation.breadcrumb": "О нас → Аттестация",
+    "page.attestation.breadcrumb": "Аттестация",
     "page.gallery.title": "Фотогалерея",
     "page.gallery.breadcrumb": "Галерея",
     "page.administration.title": "Администрация",
@@ -65,5 +65,5 @@
     "page.vacancies.title": "Вакансии",
     "page.vacancies.breadcrumb": "Вакансии",
     "page.faq.title": "Вопрос-Ответ",
-    "page.faq.breadcrumb": "Вопрос-Ответ"
+    "page.faq.breadcrumb": "О нас → Вопрос-Ответ"
 }

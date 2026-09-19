@@ -35,7 +35,7 @@
     "page.self-assessment.title": "School Self-Assessment",
     "page.self-assessment.breadcrumb": "About us → Self-assessment",
     "page.attestation.title": "Attestation",
-    "page.attestation.breadcrumb": "About us → Attestation",
+    "page.attestation.breadcrumb": "Attestation",
     "page.gallery.title": "Photo Gallery",
     "page.gallery.breadcrumb": "Gallery",
     "page.administration.title": "Administration",
@@ -65,5 +65,5 @@
     "page.vacancies.title": "Vacancies",
     "page.vacancies.breadcrumb": "Vacancies",
     "page.faq.title": "FAQ",
-    "page.faq.breadcrumb": "FAQ"
+    "page.faq.breadcrumb": "About us → FAQ"
 }
