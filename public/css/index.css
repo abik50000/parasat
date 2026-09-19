@@ -40,13 +40,13 @@ a {
 
 @media(min-width: 1024px) {
   .container.banner {
-    max-width: calc(100vw - 160px);
+    max-width: calc(100vw - 120px);
   }
 }
 
 @media(max-width: 576px) {
   .container.banner {
-    max-width:calc(100vw - 30px);
+    max-width:calc(100vw);
   }
   .container .banner-thumb {
     border-radius: 10px;
@@ -527,9 +527,12 @@ a {
   background-color: #fff;
 }
 
+.tab-content {
+  width: 100%;
+}
 .tab-content-title {
   margin-top: 0px;
-  padding-bottom: 170px;
+  padding-bottom: 120px;
   font-family: 'Helveticaneue Regular', sans-serif;
   font-size: 30px;
   line-height: 130%;
@@ -2540,6 +2543,7 @@ a {
     padding-bottom: 10px;
     font-size: 20px;
     line-height: 20px;
+    margin-right: 10px;
   }
 
   .event-tab-content-title {

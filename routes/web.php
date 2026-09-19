@@ -32,7 +32,6 @@ Route::get('/__deploy/{command?}', function (Illuminate\Http\Request $request, ?
         'migrate'        => ['migrate', ['--force' => true]],
         'migrate-status' => ['migrate:status', []],
         'seed-news'      => ['db:seed', ['--class' => 'Database\Seeders\NewsSeeder', '--force' => true]],
-        'seed-attestation' => ['db:seed', ['--class' => 'Database\Seeders\DocumentFolderSeeder', '--force' => true]],
         'storage-link'   => ['storage:link', []],
         'about'          => ['about', []],
     ];
@@ -73,7 +72,7 @@ Route::get('/about/teachers', fn () => view('pages.teachers'))->name('teachers')
 Route::get('/about/self-assessment', fn () => view('pages.self-assessment'))->name('self-assessment');
 Route::get('/about/attestation', function () {
     return view('pages.attestation', [
-        'payload' => \App\Models\DocumentFolder::publicPayload(),
+        'links' => \App\Models\AttestationLink::published()->ordered()->get(),
     ]);
 })->name('attestation');
 Route::redirect('/about/documents', '/about/attestation');

@@ -11,6 +11,15 @@ $schedule = trans('pages.cafeteria.schedule');
 $menu     = trans('pages.cafeteria.menu');
 @endphp
 
+<div class="page-figure-row" data-anim="fade-up">
+    <figure class="page-figure">
+        <img src="{{ asset('images/parasat/cafeteria.jpg') }}" alt="{{ __('pages.cafeteria.photo1_alt') }}" loading="lazy">
+    </figure>
+    <figure class="page-figure">
+        <img src="{{ asset('images/parasat/cafeteria_2.jpg') }}" alt="{{ __('pages.cafeteria.photo2_alt') }}" loading="lazy">
+    </figure>
+</div>
+
 <div class="page-two-col" style="margin-bottom:64px;">
     <div data-anim="fade-right">
         <h2 class="page-section-title">{{ __('pages.cafeteria.schedule_title') }}</h2>

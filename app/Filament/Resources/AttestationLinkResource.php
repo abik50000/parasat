@@ -2,28 +2,27 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\DocumentFolderResource\Pages;
-use App\Filament\Resources\DocumentFolderResource\RelationManagers\DocumentsRelationManager;
-use App\Models\DocumentFolder;
+use App\Filament\Resources\AttestationLinkResource\Pages;
+use App\Models\AttestationLink;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class DocumentFolderResource extends Resource
+class AttestationLinkResource extends Resource
 {
-    protected static ?string $model = DocumentFolder::class;
+    protected static ?string $model = AttestationLink::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-folder';
+    protected static ?string $navigationIcon = 'heroicon-o-link';
 
     protected static ?string $navigationGroup = 'Аттестация';
 
-    protected static ?string $navigationLabel = 'Папки';
+    protected static ?string $navigationLabel = 'Ссылки';
 
-    protected static ?string $modelLabel = 'папка';
+    protected static ?string $modelLabel = 'ссылка';
 
-    protected static ?string $pluralModelLabel = 'Папки';
+    protected static ?string $pluralModelLabel = 'Ссылки';
 
     protected static ?int $navigationSort = 1;
 
@@ -33,17 +32,18 @@ class DocumentFolderResource extends Resource
             Forms\Components\Section::make()
                 ->columns(2)
                 ->schema([
-                    Forms\Components\Select::make('parent_id')
-                        ->label('Родительская папка')
-                        ->placeholder('— Корень (Аттестация) —')
-                        ->options(fn (?DocumentFolder $record) => DocumentFolder::parentOptions($record?->id))
-                        ->searchable()
-                        ->native(false)
-                        ->helperText('Оставьте пустым, чтобы папка была на верхнем уровне.'),
+                    Forms\Components\TextInput::make('url')
+                        ->label('Ссылка на Google Диск')
+                        ->helperText('Адрес папки или файла из Google Drive. Откроется в новой вкладке.')
+                        ->url()
+                        ->required()
+                        ->maxLength(2048)
+                        ->placeholder('https://drive.google.com/drive/folders/…')
+                        ->columnSpanFull(),
 
                     Forms\Components\TextInput::make('sort')
                         ->label('Порядок')
-                        ->helperText('Чем меньше число, тем выше папка в списке.')
+                        ->helperText('Чем меньше число, тем выше ссылка в списке.')
                         ->numeric()
                         ->default(0),
 
@@ -52,7 +52,7 @@ class DocumentFolderResource extends Resource
                         ->default(true),
                 ]),
 
-            Forms\Components\Tabs::make('Название папки')
+            Forms\Components\Tabs::make('Название ссылки')
                 ->columnSpanFull()
                 ->tabs([
                     Forms\Components\Tabs\Tab::make('Русский')->schema([
@@ -80,21 +80,15 @@ class DocumentFolderResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title_ru')
-                    ->label('Папка')
-                    ->description(fn (DocumentFolder $record) => $record->parent_id ? $record->titlePath() : null)
+                    ->label('Название')
                     ->searchable()
-                    ->weight('bold'),
+                    ->weight('bold')
+                    ->wrap(),
 
-                Tables\Columns\TextColumn::make('children_count')
-                    ->counts('children')
-                    ->label('Подпапок')
-                    ->badge()
-                    ->color('gray'),
-
-                Tables\Columns\TextColumn::make('documents_count')
-                    ->counts('documents')
-                    ->label('Файлов')
-                    ->badge()
+                Tables\Columns\TextColumn::make('url')
+                    ->label('Ссылка')
+                    ->limit(60)
+                    ->url(fn (AttestationLink $record) => $record->url, shouldOpenInNewTab: true)
                     ->color('gray'),
 
                 Tables\Columns\IconColumn::make('is_published')
@@ -104,13 +98,15 @@ class DocumentFolderResource extends Resource
             ->defaultSort('sort')
             ->reorderable('sort')
             ->filters([
-                Tables\Filters\SelectFilter::make('parent_id')
-                    ->label('Родительская папка')
-                    ->options(fn () => DocumentFolder::parentOptions()),
                 Tables\Filters\TernaryFilter::make('is_published')
                     ->label('Опубликовано'),
             ])
             ->actions([
+                Tables\Actions\Action::make('open')
+                    ->label('Открыть')
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->url(fn (AttestationLink $record) => $record->url)
+                    ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
@@ -121,19 +117,12 @@ class DocumentFolderResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            DocumentsRelationManager::class,
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListDocumentFolders::route('/'),
-            'create' => Pages\CreateDocumentFolder::route('/create'),
-            'edit' => Pages\EditDocumentFolder::route('/{record}/edit'),
+            'index' => Pages\ListAttestationLinks::route('/'),
+            'create' => Pages\CreateAttestationLink::route('/create'),
+            'edit' => Pages\EditAttestationLink::route('/{record}/edit'),
         ];
     }
 }

@@ -496,9 +496,19 @@
         color: #7a869a;
         background: #f7f9fc;
     }
+    .page-figure-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin: 0 0 56px;
+    }
+    .page-figure-row .page-figure { margin: 0; }
+    .page-figure-row .page-figure img { height: 340px; }
     @media (max-width: 768px) {
         .page-figure { margin-bottom: 40px; border-radius: 10px; }
         .page-figure img { max-height: 260px; }
+        .page-figure-row { grid-template-columns: 1fr; gap: 16px; margin-bottom: 40px; }
+        .page-figure-row .page-figure img { height: 220px; }
     }
 
     /* ── Responsive ── */

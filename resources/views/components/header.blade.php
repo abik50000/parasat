@@ -347,7 +347,7 @@
                     .navbar-wrapper { width: 100%; flex-wrap: nowrap; }
                     .navbar-brand { border-right: none; padding-right: 0; width: auto; flex: 0 0 auto; }
                     .navbar-brand img.desktop-logo { display: none; }
-                    .navbar-brand img.mobile-logo { display: block; width: 92px; top: 0; }
+                    .navbar-brand img.mobile-logo { display: block;  }
                     .nav-menu-wrapper { margin-left: 0; }
                     .nav-menu .nav-link.is-active::after { display: none; }
                     .navbar-wrapper > .lang-switcher { display: none; }

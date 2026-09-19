@@ -30,7 +30,8 @@ $categories = trans('pages.clubs.categories');
     <h2 class="page-section-title" data-anim="fade-up">{{ $category }}</h2>
     <div class="event-tab-content-wrap" data-anim-stagger="fade-up" data-anim-stagger-gap="80">
         @foreach($clubs as [$name, $time, $label])
-        @php $img = asset($bgImages[$cardIndex % $bgCount]); $cardIndex++; @endphp
+        {{-- the first category is sports in every language: show the gym --}}
+        @php $img = asset($loop->parent->first ? 'images/parasat/sport_zal.jpg' : $bgImages[$cardIndex % $bgCount]); $cardIndex++; @endphp
         <div class="event-tab-content-item">
             <div class="event-tab-header-content">
                 <p class="event-date">{{ $time }}</p>
